@@ -1,8 +1,18 @@
 /* miniprogram/pages/me/me.wxss */
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1rpx solid #000 ;
+  height: 100%;
+
+
+} 
+
 .userinfo{
-    margin-top: 80rpx;
-    height: 140rpx;
+    height: 280rpx;
     width: 100%;
     background: #fff;
     border: 1rpx solid #ff0000;
@@ -12,7 +22,20 @@
   }
 
 
-.userinfo-get{
+.userinfo_get{
+  width: 500rpx;
+  height: 100rpx;
+  border: 1rpx solid #ff0000 ;
+  background-color: #eeeeee;
+  font-size: small;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.me_item{
   width: 500rpx;
   height: 100rpx;
   margin: 20rpx;

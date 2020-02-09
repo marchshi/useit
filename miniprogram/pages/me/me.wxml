@@ -6,9 +6,38 @@
     <button 
       open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo"
-      class="userinfo-get"
+      class="userinfo_get"
     >
     点击获取个人信息
     </button>
   </view>
+    
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  <view  class="me_item" >
+    
+  </view>
+  
 </view>
