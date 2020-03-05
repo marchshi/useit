@@ -1,11 +1,9 @@
 <!--index.wxml-->
 <view class="container">
 
-  <view class="text-czqy">
-    <text class="font-czqy" selectable="false" space="false" decode="false">
-      查找企业  
-    </text>
-  </view>
+  <text class="text-czqy" >
+    查找企业  
+  </text>
   
   <view>
     <image class="" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
