@@ -6,16 +6,16 @@
   flex-wrap: nowrap;
   /* justify-content: center; 主轴方向 */
   /* align-items: center; 居中对齐 */
-  background-color: #eeeeee;
-  align-items: center;
+  background-color: #f6f6f6;
+  align-items: stretch;
 }
 
 .text-czqy{
-  width: 500rpx;
-  height: 100rpx;
-  margin: 10rpx 20rpx 10rpx 20rpx;
-  background-color: #dddddd;
-  font-size: medium;
-  line-height: 30rpx;
+  width: auto;
+  height: 50rpx;
+  border: 10rpx;
+  background-color: #ffffff;
+  font-size: small;
+  line-height: 15rpx;
   vertical-align: middle;
 }
