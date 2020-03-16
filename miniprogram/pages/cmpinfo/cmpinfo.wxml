@@ -1,2 +1,10 @@
-<!--miniprogram/pages/cmpinfo/cmpinfo.wxml-->
-<text>miniprogram/pages/cmpinfo/cmpinfo.wxml</text>
+<view class="">
+    <text>
+        企业名称
+    </text>
+
+    <text>
+        企业编号
+    </text>
+</view>
+  

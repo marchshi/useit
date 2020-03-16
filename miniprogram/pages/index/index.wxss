@@ -1,21 +1,13 @@
 /**index.wxss**/
 
 .container{
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; */
   /* justify-content: center; 主轴方向 */
   /* align-items: center; 居中对齐 */
+  /* align-items: stretch; */
+  
   background-color: #f6f6f6;
-  align-items: stretch;
-}
 
-.text-czqy{
-  width: auto;
-  height: 50rpx;
-  border: 10rpx;
-  background-color: #ffffff;
-  font-size: small;
-  line-height: 15rpx;
-  vertical-align: middle;
 }

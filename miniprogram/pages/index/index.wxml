@@ -1,16 +1,12 @@
 <!--index.wxml-->
 <view class="container">
 
-  <text class="text-czqy" >
-    名称查找
-  </text>
-  
-  <view>
-    <image class="" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+  <navigator class="" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
     <text class="" selectable="false" space="false" decode="false">
       请输入企业名称
     </text>
-  </view>
+  </navigator>
+
     
   <view>
     <view>

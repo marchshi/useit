@@ -5,14 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cmpId : null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.cmpId = options.cmpId;
+    //调用云函数获取页面需要展示的数据
+    wx.cloud.callFunction({
+      name: 'getCmpInfo',
+      data:{
+        cmpId : options.cmpId
+      },
+      success: function(res){
+        console.log(res)
+      },
+      fail:console.error
+    })
   },
 
   /**

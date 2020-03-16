@@ -1,11 +1,21 @@
 // miniprogram/pages/search/search.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    dataList:[
+      {
+        cmpName:"中国石油",
+        cmpId:123000
+      },
+      {
+        cmpName:"中国石化",
+        cmpId:123001
+      },
+      {
+        cmpName:"国家电网",
+        cmpId:960000
+      }
+    ]
   },
 
   /**
@@ -36,31 +46,22 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //监听输入的汉字
+  onInput: function(e){
+    console.log("input输入的是："+e.detail.value);
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //跳转进入详情页面
+  toCmpInfo: function(e){
+    console.log(e);
+    wx.navigateTo({
+      url: '/pages/cmpinfo/cmpinfo?cmpId=5',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   }
 })

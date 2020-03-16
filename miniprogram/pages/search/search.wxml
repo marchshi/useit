@@ -1,2 +1,15 @@
 <!--miniprogram/pages/search/search.wxml-->
-<text>miniprogram/pages/search/search.wxml</text>
+<view class="container">
+
+
+    <input class="input_search" type="text" placeholder="请输入企业名称" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
+            bindinput="onInput" >
+
+    </input>
+
+    <view wx:for="{{dataList}}" wx:key="unique" bindtap="toCmpInfo">
+        企业名称：{{item.cmpName}}  企业编号：{{item.cmpId}}
+    </view>
+
+      
+</view>
