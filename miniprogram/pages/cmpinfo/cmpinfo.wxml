@@ -1,10 +1,10 @@
 <view class="">
     <text>
-        企业名称
+        企业名称:{{cmpInfo.cmpName}}
     </text>
 
     <text>
-        企业编号
+        企业地址:{{cmpInfo.address}}
     </text>
 </view>
   

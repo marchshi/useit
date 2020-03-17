@@ -6,21 +6,30 @@ Page({
    */
   data: {
     cmpId : null,
+    cmpInfo :{
+
+    }
   },
 
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.cmpId = options.cmpId;
     //调用云函数获取页面需要展示的数据
+    const _this = this;
     wx.cloud.callFunction({
-      name: 'getCmpInfo',
+      name: 'getcmpinfo',
       data:{
         cmpId : options.cmpId
       },
       success: function(res){
-        console.log(res)
+        console.log(res);
+        _this.setData({
+          cmpInfo : res.result.data
+        })
+        
       },
       fail:console.error
     })

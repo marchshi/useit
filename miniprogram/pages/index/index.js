@@ -8,6 +8,14 @@ Page({
 
   onLoad: function() {
 
+    wx.getUserInfo({
+      
+      success: (result) => {
+        console.log(result)  
+      }
+    });
+      
+
     wx.cloud.callFunction({
       name: 'test001',
       data:{

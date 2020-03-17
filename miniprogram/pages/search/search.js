@@ -55,7 +55,7 @@ Page({
   toCmpInfo: function(e){
     console.log(e);
     wx.navigateTo({
-      url: '/pages/cmpinfo/cmpinfo?cmpId=5',
+      url: '/pages/cmpinfo/cmpinfo?cmpId=010101',
       success: (result) => {
         
       },
