@@ -29,6 +29,15 @@ Page({
         }
       }
     })
+
+    wx.login({
+      success: (result) => {
+        console.log(result)
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
   /**
@@ -83,9 +92,9 @@ Page({
   /**
    * 
    */
-  onGetUserInfo: function (e) {
+  getPhoneNumber: function (e) {
 
-    console.log(e);
+    console.log(e.detail);
 
   }
 })

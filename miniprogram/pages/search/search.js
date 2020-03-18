@@ -49,6 +49,12 @@ Page({
   //监听输入的汉字
   onInput: function(e){
     console.log("input输入的是："+e.detail.value);
+    //1,获取企业名单
+    
+    //2,监听输入信息，在名单中查询出来
+
+    //3,展示查询出的企业名单
+
   },
 
   //跳转进入详情页面

@@ -3,17 +3,15 @@
 
   <!-- 用户信息部分 -->
   <view class="userinfo">
-    <image class="" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false"/>
       
     <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
+      open-type="getPhoneNumber" 
+      bindgetphonenumber="getPhoneNumber"
       class="userinfo_get"
     >
-    点击获取个人信息
+      验证手机号码
     </button>
   </view>
-    
   <view  class="me_item" >
     <navigator url="" open-type="navigate"  class="">
       <text>修改企业信息</text>
