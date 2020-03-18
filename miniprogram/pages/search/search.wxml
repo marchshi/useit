@@ -7,7 +7,7 @@
 
     </input>
 
-    <view wx:for="{{dataList}}" wx:key="unique" bindtap="toCmpInfo">
+    <view wx:for="{{searchList}}" wx:key="unique" bindtap="toCmpInfo">
         企业名称：{{item.cmpName}}  企业编号：{{item.cmpId}}
     </view>
 

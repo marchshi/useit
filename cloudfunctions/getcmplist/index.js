@@ -9,14 +9,15 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext();
   //获取数据库对象
   const db = cloud.database();
-  //获取保存公司信息的集合
+  //获取公司信息的集合
   const cmpCol = db.collection('company');
-  //获取集合中的指定ID的企业信息
-  const result = await cmpCol.where({
-      cmpId : event.cmpId
-    }).get();
+  //获取所有企业的cmpId和cmpName
+  const result = await cmpCol.field({
+    cmpId : true,
+    cmpName : true
+  }).get();
 
   return {
-    cmpInfo : result.data[0]
+    cmpList: result.data
   }
 }
