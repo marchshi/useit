@@ -2,9 +2,35 @@
     <text>
         企业名称:{{cmpInfo.cmpName}}
     </text>
-
+    <text>
+        企业编号:{{cmpInfo.cmpId}}
+    </text>
     <text>
         企业地址:{{cmpInfo.address}}
+    </text>
+    <text>
+        所属片区:{{cmpInfo.area}}
+    </text>
+    <text>
+        帮办单位:{{cmpInfo.unit}}
+    </text>
+    <text>
+        法人姓名:{{cmpInfo.farenName}}
+    </text>
+    <text bindtap = "callFarenPhone">
+        法人电话:{{cmpInfo.farenTel}}   拨打
+    </text>
+    <text>
+        负责人姓名:{{cmpInfo.fuzeName}}
+    </text>
+    <text bindtap = "callFuzePhone">
+        负责人电话:{{cmpInfo.fuzeTel}}   拨打
+    </text>
+    <text>
+        网格员姓名:{{cmpInfo.wanggeName}}
+    </text>
+    <text bindtap = "callWanggePhone">
+        网格员电话:{{cmpInfo.wanggeTel}}   拨打
     </text>
 </view>
   

@@ -7,8 +7,10 @@
 
     </input>
 
-    <view wx:for="{{searchList}}" wx:key="unique" bindtap="toCmpInfo">
-        企业名称：{{item.cmpName}}  企业编号：{{item.cmpId}}
+    <view wx:for="{{searchList}}" wx:key="unique">
+        <navigator class="" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
+            公司名称：{{item.cmpName}} 公司编号：{{item.cmpId}}
+        </navigator>
     </view>
 
       

@@ -30,13 +30,6 @@ Page({
       }
     })
 
-    wx.login({
-      success: (result) => {
-        console.log(result)
-      },
-      fail: () => {},
-      complete: () => {}
-    });
       
   },
 
@@ -55,46 +48,14 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  /**
    * 
    */
   getPhoneNumber: function (e) {
 
     console.log(e.detail);
-
+    //1、首先获取openid,通过openid在后台获取手机号然后判断有无权限
+    //2、如果openid没有绑定手机号，则获取手机号来进行绑定。
+    //3、获取手机号成功后，则将手机号发送至后台验证，同时绑定手机号与opneid
+    //4、验证成功则获取相关权限
   }
 })

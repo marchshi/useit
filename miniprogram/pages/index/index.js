@@ -14,20 +14,15 @@ Page({
         console.log(result)  
       }
     });
-      
-
-    wx.cloud.callFunction({
-      name: 'test001',
-      data:{
-        a: 1,
-        b: 2,
+    
+    //登陆，获取收藏的企业
+    wx.login({
+      success: (result) => {
+        console.log(result)
       },
-      success: function(res){
-        console.log(res)
-      },
-      fail:console.error
-    })
-
+      fail: () => {},
+      complete: () => {}
+    });
   },
 
 })

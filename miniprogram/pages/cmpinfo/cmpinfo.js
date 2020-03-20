@@ -49,38 +49,49 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  callFarenPhone : function (){
+    console.log("111111");
+    const tel = this.data.cmpInfo.farenTel +"";
+    console.log(tel)
+    wx.makePhoneCall({
+      phoneNumber: tel,
+      success: (result) => {
+        console.log("拨打电话成功")
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  callFuzePhone : function (){
+    const tel = this.data.cmpInfo.fuzeTel +"";
+    console.log(tel)
+    wx.makePhoneCall({
+      phoneNumber: tel,
+      success: (result) => {
+        console.log("拨打电话成功")
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  callWanggePhone : function (){
+    const tel = this.data.cmpInfo.wanggeTel +"";
+    console.log(tel)
+    wx.makePhoneCall({
+      phoneNumber: tel,
+      success: (result) => {
+        console.log("拨打电话成功")
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

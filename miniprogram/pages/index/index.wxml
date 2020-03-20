@@ -6,34 +6,7 @@
       请输入企业名称
     </text>
   </navigator>
-
-    
-  <view>
-    <view>
-      <text class="" selectable="false" space="false" decode="false">
-        按企业区块查找
-      </text>  
-    </view>
-    <view>
-      <text class="" selectable="false" space="false" decode="false">
-        按帮办单位查找
-      </text>  
-    </view> 
-  </view>
-
-  <view>
-    <view>
-      <text class="" selectable="false" space="false" decode="false">
-        按企业类别查找
-      </text>  
-    </view>
-    <view>
-      <text class="" selectable="false" space="false" decode="false">
-        按事务类型查找
-      </text>  
-    </view> 
-  </view>
-
+  
   <view>
     <text class="" selectable="false" space="false" decode="false">
       我收藏的企业

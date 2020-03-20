@@ -3,16 +3,11 @@ Page({
 
   data: {
     cmpList:[
-      {
-        cmpName:"中国石油",
-        cmpId:123000
-      },
-      {
-        cmpName:"中国石化",
-        cmpId:123001
-      }
+      
     ],
+    searchList:[
 
+    ]
   },
 
   /**
@@ -60,23 +55,21 @@ Page({
   onInput: function(e){
     console.log("input输入的是："+e.detail.value);
     //2,监听输入信息，在名单中查询出来
-    const value = e.detail.value;
-    
+    let value = e.detail.value.trim();
+    let searchList = []; 
+    console.log(this.data.cmpList);
+    if((value+"").length != 0){
+      for(let item of this.data.cmpList){
+        console.log(item);
+        console.log(item.cmpName.toString().indexOf(value));
+        if(item.cmpName.toString().indexOf(value) != -1){
+          searchList.push(item)
+        }
+      }
+    }
     //3,展示查询出的企业名单
-
-  },
-
-  //跳转进入详情页面
-  toCmpInfo: function(e){
-    console.log(e);
-    wx.navigateTo({
-      url: '/pages/cmpinfo/cmpinfo?cmpId=010101',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
+    this.setData({
+      searchList : searchList
+    })
   }
 })
