@@ -2,14 +2,18 @@
 <view class="container">
 
 
-    <input class="input_search" type="text" placeholder="请输入企业名称" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
+    <input class="search-input" type="text" placeholder="请输入企业名称" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
             bindinput="onInput" >
 
     </input>
 
-    <view wx:for="{{searchList}}" wx:key="unique">
-        <navigator class="" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
-            公司名称：{{item.cmpName}} 公司编号：{{item.cmpId}}
+    <view class="search-tip">
+        {{tip}}
+    </view>
+
+    <view class="search-list" wx:for="{{searchList}}" wx:key="unique">
+        <navigator class="search-item" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
+            {{item.cmpName}}
         </navigator>
     </view>
 

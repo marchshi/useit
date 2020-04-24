@@ -1,10 +1,28 @@
 /* miniprogram/pages/search/search.wxss */
-.container{
-    background-color: azure;
+page{
+    background-color: #eeeeee;
 }
 
-.input_search{
-    width: 300rpx;
-    padding: 30rpx;
+.search-input{
+    background-color: #dddddd;
+    border-radius: 40rpx;
+    height: 80rpx;
+    width: auto;
     margin: 30rpx;
+    padding-left: 30rpx;
+}
+
+.search-tip{
+    margin-left: 60rpx;
+    font-size: small;
+}
+
+.search-list{
+}
+
+.search-item{
+    padding-left: 60rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    font-size: large;
 }

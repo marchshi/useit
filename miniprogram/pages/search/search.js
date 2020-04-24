@@ -7,7 +7,8 @@ Page({
     ],
     searchList:[
 
-    ]
+    ],
+    tip:""
   },
 
   /**
@@ -22,7 +23,8 @@ Page({
       success: function (res) {
         console.log(res);
         _this.setData({
-          cmpList: res.result.cmpList
+          cmpList: res.result.cmpList,
+          tip :"已收录开发区" + res.result.cmpList.length + "家企业信息"
         })
 
       },
@@ -67,9 +69,11 @@ Page({
         }
       }
     }
+    let newTip = "共找到" + searchList.length + "家企业";
     //3,展示查询出的企业名单
     this.setData({
-      searchList : searchList
+      searchList : searchList,
+      tip : newTip
     })
   }
 })

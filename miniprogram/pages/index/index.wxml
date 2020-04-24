@@ -1,12 +1,22 @@
 <!--index.wxml-->
 <view class="container">
-
-  <navigator class="" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
-    <text class="" selectable="false" space="false" decode="false">
-      请输入企业名称
-    </text>
-  </navigator>
+  <view class="bg-search">
+    <navigator class="index-search" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
+      搜索企业
+    </navigator>
+  </view>
+  <view class="swiper-view">
+    <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <image class="index-image" src="../../images/{{item}}" data-id="{{index}}" mode="widthFix" />
+          </swiper-item>
+        </block>
+      </swiper>
+  </view>
   
+
   <view>
     <text class="" selectable="false" space="false" decode="false">
       我收藏的企业
@@ -30,5 +40,4 @@
       </view>
     </view>
   </view>
-    
 </view>

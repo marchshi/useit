@@ -1,13 +1,41 @@
 /**index.wxss**/
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
 
-.container{
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap; */
-  /* justify-content: center; 主轴方向 */
-  /* align-items: center; 居中对齐 */
-  /* align-items: stretch; */
-  
-  background-color: #f6f6f6;
+.swiper-view{
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  height: 200px;
+}
+.swiper-item{
+  display: block;
+  height: 200px;
+}
+.index-image{
+  width: 100%;
+  height: 200rpx;
+}
+.bg-search{
+  width: auto;
+  height: 100rpx;
+  background-color: #007acc;
+}
+.index-search{
+  width: auto;
+  height: 80rpx;
+  line-height: 80rpx;
 
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  text-align: center;
+  font-size: medium;
+  color: #333333;
+  background-color: white;
+  border-radius: 40rpx;
 }
