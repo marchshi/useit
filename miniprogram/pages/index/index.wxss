@@ -11,15 +11,15 @@ page {
   width: 100%;
   box-sizing: border-box;
   display: block;
-  height: 200px;
+  height: 150px;
 }
 .swiper-item{
   display: block;
-  height: 200px;
+  height: 150px;
 }
 .index-image{
   width: 100%;
-  height: 200rpx;
+  height: 150rpx;
 }
 .bg-search{
   width: auto;
@@ -38,4 +38,31 @@ page {
   color: #333333;
   background-color: white;
   border-radius: 40rpx;
+}
+
+.index-text{
+  padding-left: 50rpx;
+  font-size: medium;
+  background-color: antiquewhite;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.index-login{
+  width: auto;
+  height: max-content;
+  text-align: center;
+  color: #333333;
+  padding: 200rpx 100rpx;
+  margin-bottom: 20rpx;
+}
+.collect-item{
+  border-bottom: 2rpx solid #999999;
+  font-size: large;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  padding-bottom: 8rpx;
+  padding-left: 20rpx;
+  padding-top: 12rpx;
+  margin-bottom: 10rpx;
 }

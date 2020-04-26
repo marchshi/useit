@@ -18,26 +18,18 @@
   
 
   <view>
-    <text class="" selectable="false" space="false" decode="false">
+    <view class="index-text" >
       我收藏的企业
-    </text>
+    </view>
   </view>
 
-  <view>
-    <view>
-      <view>
-        <text class="" selectable="false" space="false" decode="false">
-          江苏天力电缆有限公司
-        </text>
-      </view>
-      <view>
-        <text class="" selectable="false" space="false" decode="false">
-          帮办单位：卫健委
-        </text>
-        <text class="" selectable="false" space="false" decode="false">
-          编号：020501
-        </text>
-      </view>
-    </view>
+  <view wx:for="{{collectList}}" wx:key="unique">
+    <navigator class="collect-item" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
+      {{item.cmpName}}
+    </navigator>
+  </view>
+
+  <view wx:if="{{!logined}}" class="index-login">
+    登录后显示
   </view>
 </view>

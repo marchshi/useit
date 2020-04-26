@@ -9,6 +9,21 @@ Page({
     autoplay : true,
     interval : 4000,
     duration : 1000,
+    collectList:[
+      {
+        cmpName:"中国石油",
+        cmpId:"010101"
+      },
+      {
+        cmpName:"中国石化",
+        cmpId:"010201"
+      },
+      {
+        cmpName:"国家电网",
+        cmpId:"020101"
+      }
+    ],
+    logined : true
   },
 
   onLoad: function() {

@@ -7,7 +7,8 @@ Page({
   data: {
     avatarUrl: 'images/user-unlogin.png',
     userInfo: {},
-    logged: false
+    logged: false,
+    inputText :""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -57,5 +58,13 @@ Page({
     //2、如果openid没有绑定手机号，则获取手机号来进行绑定。
     //3、获取手机号成功后，则将手机号发送至后台验证，同时绑定手机号与opneid
     //4、验证成功则获取相关权限
+  },
+
+  onInput(e){
+    let value = e.detail.value.trim();
+    this.setData({
+      inputText : value,
+    })
   }
+
 })
