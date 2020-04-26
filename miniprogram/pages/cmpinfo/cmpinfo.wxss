@@ -1,1 +1,66 @@
 /* miniprogram/pages/cmpinfo/cmpinfo.wxss */
+.container{
+
+}
+.cmpinfo-head{
+    width: 100%;
+    height: auto;
+    background-color: #007acc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cmpinfo-collect{
+    width: 100rpx;
+    height: 60rpx;
+    background-color: white;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rpx;
+    margin-right: 35rpx;
+    margin-top: 10rpx;
+    font-size: small;
+}
+.cmpinfo-name{
+    height: auto;
+    width: auto;
+    color: white;
+    font-family: SimHei;
+    font-size: x-large;
+    text-align: center;
+    margin-top: 20rpx;
+}
+.cmpinfo-stdCode{
+    color: #dddddd;
+    font-size: small;
+    margin-bottom: 40rpx;
+}
+.cmpinfo-info{
+    width: auto;
+    height: auto;
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: flex-start;
+    margin-top: 20rpx;
+}
+.cmpinfo-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 40rpx;
+}
+.text-left{
+    font-weight: bold;
+}
+.text-right{
+    color: #666666;
+    margin-left: 20rpx;
+}
+.call-phone{
+    margin-left: 40rpx;
+    color: #007acc;
+}

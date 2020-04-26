@@ -1,36 +1,35 @@
-<view class="">
-    <text>
-        企业名称:{{cmpInfo.cmpName}}
-    </text>
-    <text>
-        企业编号:{{cmpInfo.cmpId}}
-    </text>
-    <text>
-        企业地址:{{cmpInfo.address}}
-    </text>
-    <text>
-        所属片区:{{cmpInfo.area}}
-    </text>
-    <text>
-        帮办单位:{{cmpInfo.unit}}
-    </text>
-    <text>
-        法人姓名:{{cmpInfo.farenName}}
-    </text>
-    <text bindtap = "callFarenPhone">
-        法人电话:{{cmpInfo.farenTel}}   拨打
-    </text>
-    <text>
-        负责人姓名:{{cmpInfo.fuzeName}}
-    </text>
-    <text bindtap = "callFuzePhone">
-        负责人电话:{{cmpInfo.fuzeTel}}   拨打
-    </text>
-    <text>
-        网格员姓名:{{cmpInfo.wanggeName}}
-    </text>
-    <text bindtap = "callWanggePhone">
-        网格员电话:{{cmpInfo.wanggeTel}}   拨打
-    </text>
+<view class="cmpinfo-body">
+    <view class="cmpinfo-head">
+        <view class="cmpinfo-collect">
+            收藏
+        </view>
+        <view class="cmpinfo-name">
+            {{cmpInfo.cmpName}}
+        </view>
+        <view class="cmpinfo-stdCode">
+            {{cmpInfo.stdCode}}
+        </view>
+    </view>
+    
+    <view class="cmpinfo-info">
+        <view class="cmpinfo-row">
+            <view class="text-left">企业地址 :</view><view class="text-right">{{cmpInfo.address}}</view>
+        </view>
+        <view class="cmpinfo-row"> 
+            <view class="text-left">所属片区 :</view><view class="text-right">{{cmpInfo.area}}</view>
+        </view>
+        <view class="cmpinfo-row">
+            <view class="text-left">帮办单位 :</view><view class="text-right">{{cmpInfo.unit}}</view>
+        </view>
+        <view class="cmpinfo-row">
+            <view class="text-left">企业网格员 :</view><view class="text-right">{{cmpInfo.wanggeName}}</view> <view class="call-phone" bindtap = "callWanggePhone">拨打电话</view>
+        </view>
+        <view class="cmpinfo-row">
+            <view class="text-left">企业负责人 :</view><view class="text-right">{{cmpInfo.farenName}}</view>  <view class="call-phone" bindtap = "callFarenPhone">拨打电话</view>
+        </view>
+        <view class="cmpinfo-row">
+            <view class="text-left">企业联络人 :</view><view class="text-right">{{cmpInfo.fuzeName}}</view> <view class="call-phone" bindtap = "callFuzePhone">拨打电话</view>
+        </view>
+    </view>
 </view>
   
