@@ -8,7 +8,13 @@ Page({
     avatarUrl: 'images/user-unlogin.png',
     userInfo: {},
     logged: false,
-    inputText :""
+    inputText :"",
+    logined : false,
+    authInfo : {
+      name : "时满谦",
+      dpmt : "综合执法局",
+      title : "工作人员"
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -64,6 +70,27 @@ Page({
     let value = e.detail.value.trim();
     this.setData({
       inputText : value,
+    })
+  },
+  onTelLogin(){
+    //调用云函数获取当前账号是否登录
+    const _this = this;
+    console.log(this);
+    wx.cloud.callFunction({
+      name: 'telLogin',
+      data:{
+        tel : _this.data.inputText +""
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.result.code=="success"){
+          _this.setData({
+            logined: true,
+            authInfo : res.result.data
+          })
+        }
+      },
+      fail: console.error
     })
   }
 

@@ -2,13 +2,19 @@
 <view class="container">
 
   <!-- 用户信息部分 -->
-  <view class="login-head">
-    <input class="tel-input" type="text" placeholder="请输入手机号码" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
+  <view  class="login-head">
+    <input wx:if="{{!logined}}" class="tel-input" type="text" placeholder="请输入手机号码" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
             bindinput="onInput" >
 
     </input>
-    <view class="login-button">
+    <view wx:if="{{!logined}}" class="login-button" bindtap="onTelLogin">
       验收手机号
+    </view>
+    <view wx:if="{{logined}}" class="login-title">
+      {{authInfo.dpmt}} {{authInfo.name}}
+    </view>
+    <view wx:if="{{logined}}" class="login-text">
+      您已登录，欢迎使用！
     </view>
   </view>
 

@@ -8,18 +8,34 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   //获取数据库对象
   const db = cloud.database();
-  //获取权限信息的集合
+  //获取用户信息的集合
   const userinfoCol = db.collection('userinfo');
-  //
+  //先查看openid是否绑定过手机号
   const result = await userinfoCol.where({
-    openid: wxContext.openid
+    openid: wxContext.OPENID
   }).get();
-  if(result.data.length == 0){
-    return {
-      
+  console.log(result)
+  //1、如果已经登录，则可获得完整的用户信息
+  if (result.data.length == 1){
+    let tel = result.data[0].tel;
+    //获取权限信息的集合
+    const authCol = db.collection('auth');
+    //先查看openid是否绑定过手机号
+    const authInfo = await authCol.where({
+      tel: tel
+    }).get();
+    if (authInfo.data.length == 1){
+      return {
+        code : "success",
+        data : {
+          authInfo: authInfo.data[0],
+          userInfo: result.data[0]
+        }
+      }
     }
   }
+  //2、如果没有登录则返回未登录
   return {
-    cmpList: result.data
+    code : "fail"
   }
 }

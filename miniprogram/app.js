@@ -1,5 +1,11 @@
 //app.js
 App({
+  data :{
+    logined : false,
+    authInfo : [],
+    collectList : [],
+    cmpList : []
+  },
   onLaunch: function () {
     
     if (!wx.cloud) {
