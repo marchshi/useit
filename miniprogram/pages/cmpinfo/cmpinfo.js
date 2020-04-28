@@ -8,7 +8,8 @@ Page({
     cmpId : null,
     cmpInfo :{
 
-    }
+    },
+    isCollect : false,
   },
 
  
@@ -25,8 +26,15 @@ Page({
         cmpId : options.cmpId
       },
       success: function(res){
+        //初始化判断该企业是否收藏
+        let isCollect = false;
+        let collectList = getApp().data.collectList;
+        if (collectList.indexOf(res.result.data.stdCode) >= 0 ){
+          isCollect = true;
+        }
         console.log(res);
         _this.setData({
+          isCollect: isCollect,
           cmpInfo : res.result.data
         })
         
@@ -92,6 +100,24 @@ Page({
       
   },
 
-
+  onCollectTap :function(){
+    //修改收藏状态 添加和删除收藏
+    let isCollect = this.data.isCollect ;
+    //只要点击 就提交stdCode给后台判断
+    let _this = this;
+    wx.cloud.callFunction({
+      name: 'collectList',
+      data: {
+        stdCode: _this.data.cmpInfo.stdCode
+      },
+      success: function (res) {
+        console.log(res);
+        _this.setData({
+          isCollect: res.result.isCollect
+        })
+      },
+      fail: console.error
+    })
+  }
 
 })

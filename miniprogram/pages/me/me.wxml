@@ -3,8 +3,7 @@
 
   <!-- 用户信息部分 -->
   <view  class="login-head">
-    <input wx:if="{{!logined}}" class="tel-input" type="text" placeholder="请输入手机号码" focus="true" adjust-position="false" hold-keyboard="true" confirm-type="search"
-            bindinput="onInput" >
+    <input wx:if="{{!logined}}" class="tel-input" type="number" placeholder="请输入手机号码" bindinput="onInput" >
 
     </input>
     <view wx:if="{{!logined}}" class="login-button" bindtap="onTelLogin">

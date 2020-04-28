@@ -8,23 +8,10 @@ Page({
     autoplay : true,
     interval : 4000,
     duration : 1000,
-    collectList:[
-      {
-        cmpName:"中国石油",
-        cmpId:"010101"
-      },
-      {
-        cmpName:"中国石化",
-        cmpId:"010201"
-      },
-      {
-        cmpName:"国家电网",
-        cmpId:"020101"
-      }
-    ],
     logined : false,
     authInfo : [],
-    collectList : []
+    collectList : [],
+    collectArray : []
   },
 
   onLoad: function() {
@@ -54,10 +41,14 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.result.code=="success"){
+          getApp().data.logined = true;
+          getApp().data.authInfo = res.result.data.authInfo ;
+          getApp().data.collectList = res.result.data.userInfo.collectList;
           _this.setData({
             logined: true,
             authInfo : res.result.data.authInfo,
-            collectList : res.result.data.userInfo.collectList
+            collectList : res.result.data.userInfo.collectList,
+            collectArray: res.result.data.collectArray
           })
         }
 
@@ -79,10 +70,14 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.result.code=="success"){
+          getApp().data.logined = true;
+          getApp().data.authInfo = res.result.data.authInfo;
+          getApp().data.collectList = res.result.data.userInfo.collectList;
           _this.setData({
             logined: true,
             authInfo : res.result.data.authInfo,
-            collectList : res.result.data.userInfo.collectList
+            collectObj: res.result.data.userInfo.collectList,
+            collectArray: res.result.data.collectArray
           })
         }
 

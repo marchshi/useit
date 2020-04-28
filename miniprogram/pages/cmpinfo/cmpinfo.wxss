@@ -11,7 +11,7 @@
     align-items: center;
 }
 .cmpinfo-collect{
-    width: 100rpx;
+    width: 160rpx;
     height: 60rpx;
     background-color: white;
     display: flex;

@@ -1,7 +1,10 @@
 <view class="cmpinfo-body">
     <view class="cmpinfo-head">
-        <view class="cmpinfo-collect">
-            收藏
+        <view wx:if="{{isCollect}}"  class="cmpinfo-collect" bindtap="onCollectTap">
+            取消收藏
+        </view>
+        <view wx:if="{{!isCollect}}"  class="cmpinfo-collect" bindtap="onCollectTap">
+            添加收藏
         </view>
         <view class="cmpinfo-name">
             {{cmpInfo.cmpName}}

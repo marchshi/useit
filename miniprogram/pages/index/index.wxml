@@ -23,7 +23,7 @@
     </view>
   </view>
 
-  <view wx:for="{{collectList}}" wx:key="unique">
+  <view wx:for="{{collectArray}}" wx:key="unique">
     <navigator class="collect-item" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
       {{item.cmpName}}
     </navigator>

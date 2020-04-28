@@ -11,9 +11,7 @@ Page({
     inputText :"",
     logined : false,
     authInfo : {
-      name : "时满谦",
-      dpmt : "综合执法局",
-      title : "工作人员"
+
     }
   },
   /**
@@ -51,7 +49,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (getApp().data.logined){
+      this.setData({
+        logined : true,
+        authInfo : getApp().data.authInfo
+      })
+    }
+    
   },
 
   /**
@@ -84,6 +88,8 @@ Page({
       success: function (res) {
         console.log(res);
         if (res.result.code=="success"){
+          getApp().data.logined = true;
+          getApp().data.authInfo = res.result.data;
           _this.setData({
             logined: true,
             authInfo : res.result.data
