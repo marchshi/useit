@@ -85,4 +85,19 @@ Page({
       fail: console.error
     })
   },
+
+  onSearchTap: function(){
+    if (this.data.logined){
+      wx.navigateTo({
+        url: "/pages/search/search"
+      })
+    }else{
+      wx.showToast({
+        title: '请先登录，在下方我的中输入手机号进行验证',
+        duration: 2000,
+        icon: 'none'
+      })
+    }
+    
+  },
 })

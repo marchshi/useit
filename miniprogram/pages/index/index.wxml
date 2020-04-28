@@ -1,9 +1,9 @@
 <!--index.wxml-->
 <view class="container">
   <view class="bg-search">
-    <navigator class="index-search" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
-      搜索企业
-    </navigator>
+    <view class="index-search"  bindtap="onSearchTap">
+      搜索企业 
+    </view>
   </view>
   <view class="swiper-view">
     <swiper indicator-dots="{{indicatorDots}}"
