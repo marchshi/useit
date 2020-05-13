@@ -12,9 +12,8 @@ exports.main = async (event, context) => {
   //获取公司信息的集合
   const cmpCol = db.collection('company');
   //获取所有企业的cmpId和cmpName
-  const result = await cmpCol.field({
-    cmpId : true,
-    cmpName : true
+  const result = await cmpCol.limit(1000).where({
+    all : null
   }).get();
 
   return {
