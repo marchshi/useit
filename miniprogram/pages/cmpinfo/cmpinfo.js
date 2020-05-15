@@ -26,13 +26,24 @@ Page({
         cmpId : options.cmpId
       },
       success: function(res){
-        //初始化判断该企业是否收藏
+        //1、初始化判断该企业是否收藏
         let isCollect = false;
         let collectList = getApp().data.collectList;
         if (collectList.indexOf(res.result.data.stdCode) >= 0 ){
           isCollect = true;
         }
         console.log(res);
+        //2、整理数据 先不判断该数据是否有效 先将里面的内容规整一下
+        // let cmpInfo = res.result.data;
+        // if(!cmpInfo.wanggeName || cmpInfo.wanggeName.length ==0 ){
+        //   cmpInfo.wanggeName = "无"
+        // }
+        // if(!cmpInfo.farenName || cmpInfo.farenName.length ==0 ){
+        //   cmpInfo.wanggeName = "无"
+        // }
+        // if(!cmpInfo.fuzeName || cmpInfo.fuzeName.length ==0 ){
+        //   cmpInfo.wanggeName = "无"
+        // }
         _this.setData({
           isCollect: isCollect,
           cmpInfo : res.result.data

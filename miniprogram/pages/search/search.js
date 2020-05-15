@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //1,获取企业名单
+    //1,获取企业名单 之前是获取全部的企业信息，现在仅获取一个id和名称的索引表
     //调用云函数获取页面需要展示的数据
     const _this = this;
     wx.cloud.callFunction({
@@ -30,6 +30,18 @@ Page({
       },
       fail: console.error
     })
+    // wx.cloud.callFunction({
+    //   name: 'getcmpindex',
+    //   success: function (res) {
+    //     console.log(res);
+    //     _this.setData({
+    //       cmpList: res.result.cmpindex,
+    //       tip :"已收录开发区" + res.result.cmpindex.length + "家企业信息"
+    //     })
+
+    //   },
+    //   fail: console.error
+    // })
   },
 
   /**
@@ -55,15 +67,11 @@ Page({
 
   //监听输入的汉字
   onInput: function(e){
-    console.log("input输入的是："+e.detail.value);
     //2,监听输入信息，在名单中查询出来
     let value = e.detail.value.trim();
     let searchList = []; 
-    console.log(this.data.cmpList);
     if((value+"").length != 0){
       for(let item of this.data.cmpList){
-        console.log(item);
-        console.log(item.cmpName.toString().indexOf(value));
         if(item.cmpName.toString().indexOf(value) != -1){
           searchList.push(item)
         }

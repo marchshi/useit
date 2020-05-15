@@ -25,7 +25,14 @@
             <view class="text-left">帮办单位 :</view><view class="text-right">{{cmpInfo.unit}}</view>
         </view>
         <view class="cmpinfo-row">
-            <view class="text-left">企业网格员 :</view><view class="text-right">{{cmpInfo.wanggeName}}</view> <view class="call-phone" bindtap = "callWanggePhone">拨打电话</view>
+            <view class="text-left">企业网格员 :</view>
+            <view class="text-right">
+                <view class="name-line">{{cmpInfo.wanggeName}}</view>
+                <view wx:if="{{cmpInfo.wanggeTel}}" class="tel-line">
+                    <view>{{cmpInfo.wanggeTel}}</view>
+                    <view class="call-phone" bindtap = "callWanggePhone">拨打电话</view>
+                </view>
+            </view>
         </view>
         <view class="cmpinfo-row">
             <view class="text-left">企业负责人 :</view><view class="text-right">{{cmpInfo.farenName}}</view>  <view class="call-phone" bindtap = "callFarenPhone">拨打电话</view>
