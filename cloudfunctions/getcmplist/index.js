@@ -17,6 +17,6 @@ exports.main = async (event, context) => {
   }).get();
 
   return {
-    cmpList: result.data
+    cmpList: JSON.stringify(result.data)
   }
 }

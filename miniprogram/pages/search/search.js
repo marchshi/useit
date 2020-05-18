@@ -19,29 +19,18 @@ Page({
     //调用云函数获取页面需要展示的数据
     const _this = this;
     wx.cloud.callFunction({
-      name: 'getcmplist',
+      name: 'getcmpindex',
       success: function (res) {
-        console.log(res);
+        console.log(res.result);
+        let cmpindex = JSON.parse(res.result.cmpindex)
         _this.setData({
-          cmpList: res.result.cmpList,
-          tip :"已收录开发区" + res.result.cmpList.length + "家企业信息"
+          cmpList: cmpindex,
+          tip: "已收录开发区" + cmpindex.length + "家企业信息"
         })
 
       },
       fail: console.error
     })
-    // wx.cloud.callFunction({
-    //   name: 'getcmpindex',
-    //   success: function (res) {
-    //     console.log(res);
-    //     _this.setData({
-    //       cmpList: res.result.cmpindex,
-    //       tip :"已收录开发区" + res.result.cmpindex.length + "家企业信息"
-    //     })
-
-    //   },
-    //   fail: console.error
-    // })
   },
 
   /**

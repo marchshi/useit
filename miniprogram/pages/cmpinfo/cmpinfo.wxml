@@ -27,18 +27,38 @@
         <view class="cmpinfo-row">
             <view class="text-left">企业网格员 :</view>
             <view class="text-right">
-                <view class="name-line">{{cmpInfo.wanggeName}}</view>
+                <view class="name-line">
+                  {{cmpInfo.wanggeName.length == 0 ? "姓名未知" : cmpInfo.wanggeName }}
+                </view>
                 <view wx:if="{{cmpInfo.wanggeTel}}" class="tel-line">
                     <view>{{cmpInfo.wanggeTel}}</view>
-                    <view class="call-phone" bindtap = "callWanggePhone">拨打电话</view>
+                    <view class="call-phone" bindtap = "callWanggePhone">拨打</view>
                 </view>
             </view>
         </view>
         <view class="cmpinfo-row">
-            <view class="text-left">企业负责人 :</view><view class="text-right">{{cmpInfo.farenName}}</view>  <view class="call-phone" bindtap = "callFarenPhone">拨打电话</view>
+            <view class="text-left">企业负责人 :</view>
+            <view class="text-right">
+                <view class="name-line">
+                  {{cmpInfo.farenName.length == 0 ? "姓名未知" : cmpInfo.farenName }}
+                </view>
+                <view wx:if="{{cmpInfo.farenTel}}" class="tel-line">
+                    <view>{{cmpInfo.farenTel}}</view>
+                    <view class="call-phone" bindtap = "callFarenPhone">拨打</view>
+                </view>
+            </view>
         </view>
         <view class="cmpinfo-row">
-            <view class="text-left">企业联络人 :</view><view class="text-right">{{cmpInfo.fuzeName}}</view> <view class="call-phone" bindtap = "callFuzePhone">拨打电话</view>
+            <view class="text-left">企业联络人 :</view>
+            <view class="text-right">
+                <view class="name-line">
+                  {{cmpInfo.fuzeName.length == 0 ? "姓名未知" : cmpInfo.fuzeName }}
+                </view>
+                <view wx:if="{{cmpInfo.fuzeTel}}" class="tel-line">
+                    <view>{{cmpInfo.fuzeTel}}</view>
+                    <view class="call-phone" bindtap = "callWanggePhone">拨打</view>
+                </view>
+            </view>
         </view>
     </view>
 </view>

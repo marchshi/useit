@@ -126,6 +126,20 @@ Page({
         _this.setData({
           isCollect: res.result.isCollect
         })
+        if (res.result.isCollect){
+          wx.showToast({
+            title: '收藏成功',
+            duration: 500,
+            icon: 'none'
+          })
+        }else{
+          wx.showToast({
+            title: '取消收藏成功',
+            duration: 500,
+            icon: 'none'
+          })
+        }
+        
       },
       fail: console.error
     })

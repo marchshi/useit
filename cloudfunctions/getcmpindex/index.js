@@ -15,8 +15,8 @@ exports.main = async (event, context) => {
   const result = await bigtable.where({
     tablename : "cmpindex"
   }).get();
-
+  console.log(result);
   return {
-    cmpList: result.data
+    cmpindex: JSON.stringify(result.data[0].indexlist)
   }
 }
