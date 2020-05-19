@@ -46,3 +46,11 @@ page{
   color: #eeeeee;
   margin-top: 20rpx;
 }
+.me-tip{
+  display: flex;
+  padding: 15%;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

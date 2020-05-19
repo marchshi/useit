@@ -56,7 +56,7 @@
                 </view>
                 <view wx:if="{{cmpInfo.fuzeTel}}" class="tel-line">
                     <view>{{cmpInfo.fuzeTel}}</view>
-                    <view class="call-phone" bindtap = "callWanggePhone">拨打</view>
+                    <view class="call-phone" bindtap = "callFuzePhone">拨打</view>
                 </view>
             </view>
         </view>

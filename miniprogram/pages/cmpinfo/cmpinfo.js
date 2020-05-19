@@ -129,13 +129,13 @@ Page({
         if (res.result.isCollect){
           wx.showToast({
             title: '收藏成功',
-            duration: 500,
+            duration: 1000,
             icon: 'none'
           })
         }else{
           wx.showToast({
             title: '取消收藏成功',
-            duration: 500,
+            duration: 1000,
             icon: 'none'
           })
         }

@@ -19,7 +19,7 @@
 
   <view>
     <view class="index-text" >
-      我收藏的企业
+      收藏的企业
     </view>
   </view>
 
@@ -31,5 +31,8 @@
 
   <view wx:if="{{!logined}}" class="index-login">
     登录后显示
+  </view>
+  <view wx:if="{{logined&&collectArray.length==0}}" class="index-login">
+    可在企业详情的右上角添加收藏
   </view>
 </view>

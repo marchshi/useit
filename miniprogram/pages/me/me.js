@@ -94,6 +94,12 @@ Page({
             logined: true,
             authInfo : res.result.data
           })
+        }else{
+          wx.showToast({
+            title: '登录失败，请输入预留的手机号码',
+            duration: 2000,
+            icon: 'none'
+          })
         }
       },
       fail: console.error
