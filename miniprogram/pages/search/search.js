@@ -72,5 +72,10 @@ Page({
       searchList : searchList,
       tip : newTip
     })
+  },
+  onShareAppMessage: function () {
+
+
+
   }
 })

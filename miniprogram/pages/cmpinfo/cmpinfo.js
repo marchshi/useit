@@ -143,6 +143,11 @@ Page({
       },
       fail: console.error
     })
+  },
+  onShareAppMessage: function () {
+
+
+
   }
 
 })
