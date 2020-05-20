@@ -54,3 +54,19 @@ page{
   justify-content: center;
   align-items: center;
 }
+.me-list{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.me-item{
+  width: 100%;
+  background-color: #ffffff;
+  font-size: large;
+  margin-top: 20rpx;
+  padding-left: 60rpx;
+  padding-right: 30rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx
+}

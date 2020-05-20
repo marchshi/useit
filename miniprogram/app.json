@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/me/me",
     "pages/search/search",
-    "pages/cmpinfo/cmpinfo"
+    "pages/cmpinfo/cmpinfo",
+    "pages/mycmp/mycmp"
   ],
   "tabBar": {
     "custom": false,

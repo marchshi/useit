@@ -105,9 +105,15 @@ Page({
       fail: console.error
     })
   },
+  //点击跳转页面
+  toMyCmp(){
+    console.log("111111")
+    wx.navigateTo({
+      url: "/pages/mycmp/mycmp",
+    })
+  },
+
   onShareAppMessage: function () {
-
-
 
   }
 
