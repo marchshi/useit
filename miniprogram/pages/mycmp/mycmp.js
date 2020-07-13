@@ -5,14 +5,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id:"",
+    cmplist:[],
+    collectArray:[
+      {
+        cmpId:'20',
+        cmpName:'江苏时兴电缆'
+      },
+      {
+        cmpId: '30',
+        cmpName: '金湖聚力水果'
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**

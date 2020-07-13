@@ -1,5 +1,8 @@
 <!--pages/mycmp/mycmp.wxml-->
 <view class="container">
+  <view wx:if="{{}}">
+
+  </view>
   <view wx:for="{{collectArray}}" wx:key="unique">
     <navigator class="collect-item" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
       {{item.cmpName}}

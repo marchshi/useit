@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
     if (authInfo.data.length == 1){
       //获取公司信息的集合
       const cmpCol = db.collection('company');
-      let collectList = result.data[0].collectList ;
+      let collectList = result.data[0].collectList == null ? [] : result.data[0].collectList ;
       let collectArray = await cmpCol.where({
         stdCode: db.command.in(collectList)
       }).get();

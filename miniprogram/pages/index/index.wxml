@@ -2,6 +2,7 @@
 <view class="container">
   <view class="bg-search">
     <view class="index-search"  bindtap="onSearchTap">
+      <image class="icon_search" src="../../images/icon-search.png"></image>
       搜索企业 
     </view>
   </view>

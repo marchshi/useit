@@ -66,3 +66,23 @@ page {
   padding-top: 16rpx;
   margin-bottom: 10rpx;
 }
+.index-search{
+  width: auto;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+  color: #333333;
+  background-color: white;
+  border-radius: 40rpx;
+}
+.icon_search{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
