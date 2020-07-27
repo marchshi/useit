@@ -1,0 +1,8 @@
+<!--miniprogram/pages/userList/userList.wxml-->
+<view class="container">
+  <view wx:for="{{userList}}" wx:key="unique">
+    <navigator class="collect-item" url="/pages/editUser/editUser?id={{item.id}}" open-type="navigate">
+      {{item.name}}
+    </navigator>
+  </view>
+</view>

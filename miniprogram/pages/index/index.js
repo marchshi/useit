@@ -14,9 +14,14 @@ Page({
     collectArray : []
   },
 
+  //需要在index界面获取登录信息，如果登录信息没有返回，且用户切换切面，则可能出现bug
   onLoad: function() {
 
-    console.log(app);
+    console.log("index界面的onload函数");
+    wx.showLoading({
+      title: '正在连接服务器',
+      mask: true,
+    })
 
   },
 
@@ -24,10 +29,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("index界面的onShow函数");
     //1,获取登录状态
     //调用云函数获取当前账号是否登录
     const _this = this;
+    
     wx.cloud.callFunction({
       name: 'getuserinfo',
       success: function (res) {
@@ -43,9 +49,11 @@ Page({
             collectArray: res.result.data.collectArray
           })
         }
-
       },
-      fail: console.error
+      fail: console.error,
+      complete:function(){
+        wx.hideLoading();
+      }
     })
   },
 
@@ -64,6 +72,6 @@ Page({
     
   },
   onShareAppMessage: function () {
-
+    
   }
 })

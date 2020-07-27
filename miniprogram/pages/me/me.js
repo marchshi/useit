@@ -12,30 +12,22 @@ Page({
     logined : false,
     authInfo : {
 
-    }
+    },
+    test1:"测试数据"
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
+    let that = this;
+    getApp().watch(that.watchBack)
+  },
+  watchBack: function (name) {
+    console.log(22222);
+    console.log('this.name==' + name);
+    this.setData({
+      test1:"修改测试数据"
     })
-
-      
   },
 
   /**
@@ -110,6 +102,13 @@ Page({
     console.log("111111")
     wx.navigateTo({
       url: "/pages/mycmp/mycmp",
+    })
+  },
+  
+  //点击跳转人员管理页面
+  toUserList() {
+    wx.navigateTo({
+      url: "/pages/userList/userList",
     })
   },
 
