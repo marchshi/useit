@@ -1,26 +1,27 @@
-// miniprogram/pages/editUser/editUser.js
+// miniprogram/pages/editArea/editArea.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userinfo:[]
+    areainfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    console.log(options.id);
     const db = wx.cloud.database();
-    db.collection('user').where({
+    db.collection("area").where({
       id : options.id
     }).get().then(res=>{
+      console.log(res)
       this.setData({
-        userinfo: JSON.stringify(res.data[0])
+        areainfo : JSON.stringify(res.data[0])
       })
-    });
+    })
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**

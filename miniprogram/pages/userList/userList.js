@@ -26,49 +26,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //获取用户列表
-    // wx.cloud.callFunction({
-    //   name: 'getuserinfo',
-    //   success: function (res) {
-    //     console.log(res);
-    //     if (res.result.code == "success") {
-    //       getApp().data.logined = true;
-    //       getApp().data.authInfo = res.result.data.authInfo;
-    //       getApp().data.collectList = res.result.data.userInfo.collectList;
-    //       _this.setData({
-    //         logined: true,
-    //         authInfo: res.result.data.authInfo,
-    //         collectObj: res.result.data.userInfo.collectList,
-    //         collectArray: res.result.data.collectArray
-    //       })
-    //     }
-    //   },
-    //   fail: console.error,
-    //   complete: function () {
-    //     wx.hideLoading();
-    //   }
-    // })
     //1、获取数据库引用
 
     const db = wx.cloud.database();
-    // db.collection("user").orderBy("id","asc").skip(10).get({
-    //   success :function(res){
-    //     console.log(res)
-    //   }
-    // });
     const that = this;
+    //promise获取到总数后根据总数进行查询
     new Promise((resolve, reject) => {
       db.collection("user").count().then(res => resolve(res.total)).catch(e => reject("获取总数失败"));
     }).then(total=>{
       let userList = [];
       console.log(total)
       for (let i = 0; i < total; i += 20) {
+        //promise每次获取完列表后
         new Promise((resolve, reject) => {
           db.collection("user").orderBy("id", "asc").skip(i).limit(20).get().then(res=>resolve(res.data)).catch(e=>reject("查询列表失败"))
         }).then(res=>{
           userList = userList.concat(res);
           if (userList.length == total){
             console.log("获取数据成功")
+            // userList = userList.sort("id"); 
+            //对用户列表进行排序
+            for(let m = 0 ; m < userList.length-1 ; m++){
+              for (let n = m + 1; n < userList.length ; n++){
+                if (parseInt(userList[m].id) > parseInt(userList[n].id) ){
+                  let temp = userList[m];
+                  userList[m] = userList[n];
+                  userList[n] = temp;
+                }  
+              }
+            }
             that.setData({
               userList: userList
             })

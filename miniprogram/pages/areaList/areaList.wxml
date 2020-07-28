@@ -1,0 +1,8 @@
+<!--miniprogram/pages/areaList/areaList.wxml-->
+<view class="container">
+  <view wx:for="{{areaList}}" wx:key="unique">
+    <navigator class="item" url="/pages/editArea/editArea?id={{item.id}}" open-type="navigate">
+      {{item.id}}  {{item.areaName}}
+    </navigator>
+  </view>
+</view>

@@ -111,7 +111,11 @@ Page({
       url: "/pages/userList/userList",
     })
   },
-
+  toAreaList(){
+    wx.navigateTo({
+      url: "/pages/areaList/areaList",
+    })
+  },
   onShareAppMessage: function () {
 
   }

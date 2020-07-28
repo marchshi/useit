@@ -6,7 +6,9 @@
     "pages/cmpinfo/cmpinfo",
     "pages/mycmp/mycmp",
     "pages/userList/userList",
-    "pages/editUser/editUser"
+    "pages/editUser/editUser",
+    "pages/areaList/areaList",
+    "pages/editArea/editArea"
   ],
   "tabBar": {
     "custom": false,

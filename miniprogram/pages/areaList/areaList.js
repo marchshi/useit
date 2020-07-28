@@ -1,26 +1,18 @@
-// miniprogram/pages/editUser/editUser.js
+// miniprogram/pages/areaList/areaList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userinfo:[]
+    areaList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    const db = wx.cloud.database();
-    db.collection('user').where({
-      id : options.id
-    }).get().then(res=>{
-      this.setData({
-        userinfo: JSON.stringify(res.data[0])
-      })
-    });
+
   },
 
   /**
@@ -34,7 +26,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    const db = wx.cloud.database();
+    db.collection("area").orderBy("id","asc").get().then(res=>{
+      console.log(res)
+      this.setData({
+        areaList:res.data
+      })
+    }).catch(e=>console.log(e))
   },
 
   /**

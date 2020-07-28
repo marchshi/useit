@@ -29,13 +29,13 @@
 
   <view wx:if="{{logined}}" class="me-list">
     <view class="me-item" bindtap="toUserList">
-      （管理员）人员列表
+      （管理员）人员管理
     </view>
   </view>
 
   <view wx:if="{{logined}}" class="me-list">
-    <view class="me-item" bindtap="toMyCmp">
-      我挂钩的企业
+    <view class="me-item" bindtap="toAreaList">
+      （管理员）片区管理
     </view>
   </view>
 

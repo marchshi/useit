@@ -1,2 +1,2 @@
 <!--miniprogram/pages/editUser/editUser.wxml-->
-<text>miniprogram/pages/editUser/editUser.wxml</text>
+<view>{{userinfo}}</view>
