@@ -71,6 +71,11 @@ Page({
     }
     
   },
+  toChooseArea(){
+    wx.navigateTo({
+      url: "/pages/chooseArea/chooseArea",
+    })
+  },
   onShareAppMessage: function () {
     
   }

@@ -1,0 +1,38 @@
+/* miniprogram/pages/chooseArea/chooseArea.wxss */
+.button-line{
+  display: flex;
+  flex-direction: row;
+  height: 200rpx;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.button-item1{
+  width: 220rpx;
+  height: 120rpx;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-item2{
+  width: 220rpx;
+  height: 120rpx;
+  background-color: blue;
+  color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-text1{
+  margin: 10rpx;
+  color: #F8F8F8;
+  text-align: center;
+}
+.button-text2{
+  width: 160rpx;
+  color: #F8F8F8;
+  text-align: center;
+}

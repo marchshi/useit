@@ -8,7 +8,8 @@
     "pages/userList/userList",
     "pages/editUser/editUser",
     "pages/areaList/areaList",
-    "pages/editArea/editArea"
+    "pages/editArea/editArea",
+    "pages/chooseArea/chooseArea"
   ],
   "tabBar": {
     "custom": false,
