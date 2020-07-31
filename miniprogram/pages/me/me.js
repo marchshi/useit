@@ -116,6 +116,11 @@ Page({
       url: "/pages/areaList/areaList",
     })
   },
+  toTestWeui(){
+    wx.navigateTo({
+      url: "/pages/testWeui/testWeui",
+    })
+  },
   onShareAppMessage: function () {
 
   }

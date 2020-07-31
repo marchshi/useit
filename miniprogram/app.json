@@ -9,7 +9,8 @@
     "pages/editUser/editUser",
     "pages/areaList/areaList",
     "pages/editArea/editArea",
-    "pages/chooseArea/chooseArea"
+    "pages/chooseArea/chooseArea",
+    "pages/testWeui/testWeui"
   ],
   "tabBar": {
     "custom": false,
@@ -40,5 +41,8 @@
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

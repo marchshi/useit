@@ -1,2 +1,71 @@
 <!--miniprogram/pages/editUser/editUser.wxml-->
-<view>{{userinfo}}</view>
+<view class="container">
+  <form class="form-column" bindsubmit="onSave">
+    <view class="edit-line">
+      <view class="line-text">
+        人员编号：
+      </view>
+      <input class="line-input" disabled="true" name="id" value="{{userinfo.id}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        姓名：
+      </view>
+      <input class="line-input" name="name" value="{{userinfo.name}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        微信绑定的手机号：
+      </view>
+      <input class="line-input" name="wxTel" value="{{userinfo.wxTel}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        联系电话：
+      </view>
+      <input class="line-input" name="tel" value="{{userinfo.tel}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        所属部门：
+      </view>
+      <input class="line-input" name="dpmt" value="{{userinfo.dpmt}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        职务：
+      </view>
+      <input class="line-input" name="title" value="{{userinfo.title}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        权限：
+      </view>
+      <input class="line-input" name="auth" value="{{userinfo.auth}}">
+
+      </input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        备注：
+      </view>
+      <input class="line-input" name="remark" value="{{userinfo.remark}}">
+
+      </input>
+    </view>
+    <button form-type="submit">保存</button>
+  </form>
+  
+</view>

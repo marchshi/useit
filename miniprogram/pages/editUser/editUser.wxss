@@ -1,1 +1,22 @@
 /* miniprogram/pages/editUser/editUser.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+}
+.form-column{
+  display: flex;
+  flex-direction: column;
+  
+}
+.edit-line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #999999;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 20rpx;
+}
+.line-input{
+  text-align: right;
+}

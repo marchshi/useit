@@ -1,2 +1,58 @@
 <!--miniprogram/pages/editArea/editArea.wxml-->
-<view>{{areainfo}}</view>
+<view class="container">
+  <form class="form-column" bindsubmit="onSave">
+    <view class="edit-line">
+      <view class="line-text">
+        片区编号：
+      </view>
+      <input class="line-input" disabled="true" name="id" value="{{areainfo.id}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        片区名称：
+      </view>
+      <input class="line-input" name="areaName" value="{{areainfo.areaName}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        片区别名：
+      </view>
+      <input class="line-input" name="nickname" value="{{areainfo.nickname}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        负责部门：
+      </view>
+      <input class="line-input" name="dpmtName" value="{{areainfo.dpmtName}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        片区负责人：
+      </view>
+      <input class="line-input" name="userName" value="{{areainfo.userName}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        地块数：
+      </view>
+      <input class="line-input" name="blockNum" value="{{areainfo.blockNum}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        片区图片：
+      </view>
+      <input class="line-input" name="picture" value="{{areainfo.picture}}"></input>
+    </view>
+    <view class="edit-line">
+      <view class="line-text">
+        备注：
+      </view>
+      <input class="line-input" name="remark" value="{{areainfo.remark}}">
+
+      </input>
+    </view>
+    <button form-type="submit">保存</button>
+  </form>
+  
+</view>
+

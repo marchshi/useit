@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id :"",
     userinfo:[]
   },
 
@@ -13,14 +14,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    const db = wx.cloud.database();
-    db.collection('user').where({
+    this.setData({
       id : options.id
-    }).get().then(res=>{
-      this.setData({
-        userinfo: JSON.stringify(res.data[0])
-      })
-    });
+    })
   },
 
   /**
@@ -34,7 +30,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    const db = wx.cloud.database();
+    db.collection('user').where({
+      id : this.data.id
+    }).get().then(res=>{
+      this.setData({
+        userinfo: res.data[0]
+      })
+    });
   },
 
   /**
@@ -70,5 +73,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onSave(e){
+    console.log(e.detail.value);
+    let userinfo = e.detail.value;
+    const db = wx.cloud.database();
+    db.collection("user").where({
+      id : userinfo.id
+    }).update({
+      data :userinfo
+    }).then(e=>console.log(e))
   }
 })

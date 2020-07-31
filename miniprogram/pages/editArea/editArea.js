@@ -19,7 +19,7 @@ Page({
     }).get().then(res=>{
       console.log(res)
       this.setData({
-        areainfo : JSON.stringify(res.data[0])
+        areainfo : res.data[0]
       })
     })
   },
