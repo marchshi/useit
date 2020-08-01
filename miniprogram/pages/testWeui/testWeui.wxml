@@ -15,7 +15,7 @@
             </mp-slideview>
         </mp-cells>
 
-        <mp-cells title="带图标、说明的列表项" footer="底部说明文字">
+        <mp-cells title="" footer="底部说明文字">
             <mp-cell value="标题文字" footer="说明文字">
                 <image slot="icon" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
             </mp-cell>

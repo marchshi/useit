@@ -11,9 +11,37 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad() {
+    this.setData({
+      search: this.search.bind(this)
+    })
+    wx.showLoading({
+      title: '正在连接服务器',
+      mask: true,
+    })
+},
+search: function (value) {
+  return new Promise((resolve, reject) => {
+    let userList = this.data.userList;
+    let searchList = []; 
+    if((value+"").length != 0){
+      for(let item of userList){
+        if(item.name.toString().indexOf(value) != -1){
+          item.text = item.name;
+          searchList.push(item)
+        }
+      }
+      console.log(searchList)
+      resolve(searchList)
+    }
+  })
+},
+selectResult: function (e) {
+    console.log('select result', e.detail)
+    wx.navigateTo({
+      url: "/pages/editUser/editUser?id="+e.detail.item.id,
+    })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -27,7 +55,6 @@ Page({
    */
   onShow: function () {
     //1、获取数据库引用
-
     const db = wx.cloud.database();
     const that = this;
     //promise获取到总数后根据总数进行查询
@@ -58,61 +85,12 @@ Page({
             that.setData({
               userList: userList
             })
+            wx.hideLoading();
           }
         })
       }
     }).catch(res=>console.log(res+"1111"))
-
-    // this.getUserTotal();
-
-    // let total = 0;
-    // db.collection("user").count().then(res => console.log(res.total));
-    // let userList = [];
-    // for(let i = 1 ; i<total+1 ; i+=20){
-    //   db.collection("user").orderBy("id", "asc").skip(i).limit(20).get({
-    //     success:function(res){
-    //       userList.concat(res.data)
-    //     }
-    //   })
-    // }
-    // console.log(userList)
   },
-  getUserTotal(){
-    const db = wx.cloud.database();
-    return new Promise((resolve, reject) => {
-      db.collection("user").count().then(res => resolve(res.total)).catch(e=>reject("获取总数失败"));
-    });
-    // db.collection("user").count().then(res=> console.log(res))
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */

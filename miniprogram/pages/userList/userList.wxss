@@ -12,3 +12,16 @@
   padding-top: 16rpx;
   margin-bottom: 10rpx;
 }
+#button-mini{
+  font-size: small;
+  margin: 0rpx;
+  
+}
+.titleline{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}

@@ -5,67 +5,60 @@
       <view class="line-text">
         人员编号：
       </view>
-      <input class="line-input" disabled="true" name="id" value="{{userinfo.id}}">
-
-      </input>
+      <input class="line-input" disabled="true" name="id" value="{{userinfo.id}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         姓名：
       </view>
-      <input class="line-input" name="name" value="{{userinfo.name}}">
-
-      </input>
+      <input class="line-input" name="name" value="{{userinfo.name}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         微信绑定的手机号：
       </view>
-      <input class="line-input" name="wxTel" value="{{userinfo.wxTel}}">
-
-      </input>
+      <input class="line-input" name="wxTel" value="{{userinfo.wxTel}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         联系电话：
       </view>
-      <input class="line-input" name="tel" value="{{userinfo.tel}}">
-
-      </input>
+      <input class="line-input" name="tel" value="{{userinfo.tel}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         所属部门：
       </view>
-      <input class="line-input" name="dpmt" value="{{userinfo.dpmt}}">
-
-      </input>
+      <input class="line-input" name="dpmt" value="{{userinfo.dpmt}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         职务：
       </view>
-      <input class="line-input" name="title" value="{{userinfo.title}}">
-
-      </input>
+      <input class="line-input" name="title" value="{{userinfo.title}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         权限：
       </view>
-      <input class="line-input" name="auth" value="{{userinfo.auth}}">
-
-      </input>
+      <input class="line-input" name="auth" value="{{userinfo.auth}}"></input>
     </view>
     <view class="edit-line">
       <view class="line-text">
         备注：
       </view>
-      <input class="line-input" name="remark" value="{{userinfo.remark}}">
-
-      </input>
+      <input class="line-input" name="remark" value="{{userinfo.remark}}"></input>
     </view>
     <button form-type="submit">保存</button>
   </form>
-  
+  <mp-form>
+    <mp-cells title="表单" footer="底部说明文字底部说明文字">
+      <mp-cell prop="userid" title="用户编号" ext-class="">
+        <view>{{userinfo.id}}</view>
+      </mp-cell>
+      <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
+        <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
 </view>

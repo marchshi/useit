@@ -1,5 +1,12 @@
 <!--miniprogram/pages/userList/userList.wxml-->
 <view class="container">
+  <view>
+        <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    </view>
+  <view class="titleline">
+    <view>当前共有用户98名</view>
+    <button id="button-mini" type="primary" size="mini">添加用户</button>
+  </view>
   <view wx:for="{{userList}}" wx:key="unique">
     <navigator class="item" url="/pages/editUser/editUser?id={{item.id}}" open-type="navigate">
       {{item.id}}  {{item.name}}  {{item.dpmt}}

@@ -1,7 +1,5 @@
 /* miniprogram/pages/editUser/editUser.wxss */
 .container{
-  display: flex;
-  flex-direction: column;
 }
 .form-column{
   display: flex;
