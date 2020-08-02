@@ -53,11 +53,31 @@
   </form>
   <mp-form>
     <mp-cells title="表单" footer="底部说明文字底部说明文字">
-      <mp-cell prop="userid" title="用户编号" ext-class="">
-        <view>{{userinfo.id}}</view>
+      <mp-cell prop="id" title="用户编号" ext-class="">
+        <view class="user-text">{{userinfo.id}}</view>
       </mp-cell>
-      <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
-        <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+      <mp-cell id="user-cells" prop="name" title="姓名" ext-class="">
+        <input bindinput="formInputChange" data-field="name" class="user-input" placeholder="请输入姓名" value="{{userinfo.name}}"/>
+      </mp-cell>
+      <mp-cell  prop="wxTel" title="微信绑定的手机号" ext-class="">
+        <input bindinput="formInputChange" data-field="wxTel" class="" placeholder="请输入微信绑定的手机号" type="number" value="{{userinfo.wxTel}}"/>
+      </mp-cell>
+      <mp-cell  prop="tel" title="联系电话" ext-class="">
+        <input bindinput="formInputChange" data-field="tel" class="" placeholder="请输入联系电话" type="number" value="{{userinfo.tel}}"/>
+      </mp-cell>
+      <mp-cell  prop="dpmt" title="所属部门" ext-class="">
+        <input bindinput="formInputChange" data-field="dpmt" class="" placeholder="请输入所属部门" value="{{userinfo.dpmt}}"/>
+      </mp-cell>
+      <mp-cell  prop="title" title="职务" ext-class="">
+        <input bindinput="formInputChange" data-field="title" class="" placeholder="请输入职务" value="{{userinfo.title}}"/>
+      </mp-cell>
+      <mp-cell  prop="auth" title="权限" ext-class="">
+        <picker bindchange="bindAuthChange" value="{{authIndex}}" range="{{authList}}">
+          <view class="weui-select" >{{authList[authIndex]}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="remark" title="备注" ext-class="">
+        <input bindinput="formInputChange" data-field="remark" class="" placeholder="请输入备注" value="{{userinfo.remark}}"/>
       </mp-cell>
     </mp-cells>
   </mp-form>

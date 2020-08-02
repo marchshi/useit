@@ -6,7 +6,9 @@ Page({
    */
   data: {
     id :"",
-    userinfo:[]
+    userinfo:[],
+    authIndex : 0,
+    authList:["2网格员","6部门负责人","9管理员"]
   },
 
   /**

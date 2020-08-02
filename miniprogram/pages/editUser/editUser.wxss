@@ -18,3 +18,9 @@
 .line-input{
   text-align: right;
 }
+.weui-label{
+  width: 260rpx;
+}
+.weui-select{
+  padding-left: 0rpx;
+}
