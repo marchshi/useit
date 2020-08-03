@@ -1,26 +1,13 @@
 /* miniprogram/pages/editUser/editUser.wxss */
 .container{
 }
-.form-column{
-  display: flex;
-  flex-direction: column;
-  
-}
-.edit-line{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 2rpx solid #999999;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 20rpx;
-}
-.line-input{
-  text-align: right;
-}
 .weui-label{
   width: 260rpx;
 }
 .weui-select{
   padding-left: 0rpx;
+}
+button{
+  margin-top: 20rxp;
+  margin-bottom: 20rpx;
 }

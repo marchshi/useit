@@ -1,58 +1,8 @@
 <!--miniprogram/pages/editUser/editUser.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="container">
-  <form class="form-column" bindsubmit="onSave">
-    <view class="edit-line">
-      <view class="line-text">
-        人员编号：
-      </view>
-      <input class="line-input" disabled="true" name="id" value="{{userinfo.id}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        姓名：
-      </view>
-      <input class="line-input" name="name" value="{{userinfo.name}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        微信绑定的手机号：
-      </view>
-      <input class="line-input" name="wxTel" value="{{userinfo.wxTel}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        联系电话：
-      </view>
-      <input class="line-input" name="tel" value="{{userinfo.tel}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        所属部门：
-      </view>
-      <input class="line-input" name="dpmt" value="{{userinfo.dpmt}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        职务：
-      </view>
-      <input class="line-input" name="title" value="{{userinfo.title}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        权限：
-      </view>
-      <input class="line-input" name="auth" value="{{userinfo.auth}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        备注：
-      </view>
-      <input class="line-input" name="remark" value="{{userinfo.remark}}"></input>
-    </view>
-    <button form-type="submit">保存</button>
-  </form>
-  <mp-form>
-    <mp-cells title="表单" footer="底部说明文字底部说明文字">
+  <mp-form  id="form" rules="{{rules}}" models="{{userinfo}}" bindsubmit="onSave">
+    <mp-cells title="用户信息">
       <mp-cell prop="id" title="用户编号" ext-class="">
         <view class="user-text">{{userinfo.id}}</view>
       </mp-cell>
@@ -66,19 +16,28 @@
         <input bindinput="formInputChange" data-field="tel" class="" placeholder="请输入联系电话" type="number" value="{{userinfo.tel}}"/>
       </mp-cell>
       <mp-cell  prop="dpmt" title="所属部门" ext-class="">
-        <input bindinput="formInputChange" data-field="dpmt" class="" placeholder="请输入所属部门" value="{{userinfo.dpmt}}"/>
+        <picker bindchange="bindDpmtChange" range-key="name" range="{{dpmtList}}">
+          <view class="picker">{{userinfo.dpmt?userinfo.dpmt:'请选择所属部门'}}</view>
+        </picker>
       </mp-cell>
       <mp-cell  prop="title" title="职务" ext-class="">
         <input bindinput="formInputChange" data-field="title" class="" placeholder="请输入职务" value="{{userinfo.title}}"/>
       </mp-cell>
       <mp-cell  prop="auth" title="权限" ext-class="">
-        <picker bindchange="bindAuthChange" value="{{authIndex}}" range="{{authList}}">
-          <view class="weui-select" >{{authList[authIndex]}}</view>
+        <picker bindchange="bindAuthChange" range="{{authList}}">
+          <view class="picker">{{userinfo.auth?userinfo.auth:'请选择用户权限'}}</view>
         </picker>
       </mp-cell>
       <mp-cell  prop="remark" title="备注" ext-class="">
-        <input bindinput="formInputChange" data-field="remark" class="" placeholder="请输入备注" value="{{userinfo.remark}}"/>
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+        </view>
       </mp-cell>
     </mp-cells>
+    <button type="primary" bindtap="onSubmit">{{pageType=="add"?"添加":"保存"}}</button>
+    <button wx:if="{{pageType=='edit'}}" type="warn" plain="false" bindtap="onDelete">删除</button>
   </mp-form>
+  <mp-dialog title="注意" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view>你确定要删除此用户吗？</view>
+  </mp-dialog>
 </view>

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userList :{}
+    userList :{},
+    totalUser : 0,
   },
 
   /**
@@ -83,13 +84,19 @@ selectResult: function (e) {
               }
             }
             that.setData({
-              userList: userList
+              userList: userList,
+              totalUser : userList.length
             })
             wx.hideLoading();
           }
         })
       }
     }).catch(res=>console.log(res+"1111"))
+  },
+  addUser(e){
+    wx.navigateTo({
+      url: '/pages/editUser/editUser',
+    })
   },
   /**
    * 用户点击右上角分享
