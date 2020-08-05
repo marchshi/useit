@@ -1,0 +1,13 @@
+<!--miniprogram/pages/setBlockUser/setBlockUser.wxml-->
+<view class="container">
+<mp-cells title="地块列表">
+  <view wx:for="{{blockList}}" wx:for-index="index">
+    <mp-cell title="{{item.blockName}}">
+      <picker bindchange="bindUserChange" data-blockId="{{item.id}}" data-blockindex="{{index}}" range-key="name" range="{{userList}}">
+        <view class="picker" >{{item.userName?item.userName:'请选择地块员'}}</view>
+      </picker>
+    </mp-cell>
+  </view>
+</mp-cells>
+</view>
+

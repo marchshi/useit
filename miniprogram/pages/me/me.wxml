@@ -21,6 +21,9 @@
   <mp-cells title="">
     <mp-cell link hover url="/pages/userList/userList" value="(管理员)人员管理"></mp-cell>
     <mp-cell link hover url="/pages/areaList/areaList" value="(管理员)片区管理"></mp-cell>
+    <mp-cell link hover url="/pages/setBlockUser/setBlockUser?areaid=1&dpmtid=1" value="(片区负责人)指定地块员"></mp-cell>
+    <mp-cell link hover url="/pages/setCompanyUser/setCompanyUser" value="(片区负责人)指定企业网格员"></mp-cell>
+    <mp-cell link hover url="/pages/myBlockList/myBlockList?id=126" value="(地块员)我管理的地块"></mp-cell>
     <mp-cell link hover url="/pages/mycmp/mycmp" value="(网格员)我挂钩的企业"></mp-cell>
   </mp-cells>
   <view wx:if="{{!logined}}" class="me-tip">

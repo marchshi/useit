@@ -14,7 +14,11 @@
     "pages/blockList/blockList",
     "pages/editBlock/editBlock",
     "pages/chooseBlock/chooseBlock",
-    "pages/blockinfo/blockinfo"
+    "pages/blockinfo/blockinfo",
+    "pages/setBlockUser/setBlockUser",
+    "pages/setCompanyUser/setCompanyUser",
+    "pages/myBlockList/myBlockList",
+    "pages/myBlockInfo/myBlockInfo"
   ],
   "tabBar": {
     "custom": false,
