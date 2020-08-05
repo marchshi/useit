@@ -1,11 +1,11 @@
-// miniprogram/pages/chooseArea/chooseArea.js
+// miniprogram/pages/blockList/blockList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    blockList:[]
   },
 
   /**
@@ -13,6 +13,15 @@ Page({
    */
   onLoad: function (options) {
 
+    const db = wx.cloud.database();
+    db.collection("area").where({
+      id : options.id
+    }).get().then(res=>{
+      console.log(res)
+      this.setData({
+        blockList : res.data[0].blockList
+      })
+    }).catch(e=>console.log(e))
   },
 
   /**
@@ -26,13 +35,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const db = wx.cloud.database();
-    db.collection("area").orderBy("id","asc").get().then(res=>{
-      console.log(res)
-      this.setData({
-        areaList:res.data
-      })
-    }).catch(e=>console.log(e))
   },
 
   /**

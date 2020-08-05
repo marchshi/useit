@@ -1,23 +1,8 @@
 <!--miniprogram/pages/chooseArea/chooseArea.wxml-->
-<view>
- <view class="button-line">
-    <view class="button-item1" bindtap="toChooseArea">
-      <view class="button-text1">按地块查找</view>
-    </view>
-    <view class="button-item2">
-      <view class="button-text2">按帮办单位查找</view>
-    </view>
-    <view class="button-item2">
-      <view class="button-text2">按帮办单位查找</view>
-    </view>
+<view class="container">
+<mp-cells title="片区列表">
+  <view wx:for="{{areaList}}" wx:key="unique">
+    <mp-cell link hover url="/pages/chooseBlock/chooseBlock?id={{item.id}}" value="{{item.areaName}}"></mp-cell>
   </view>
-
-  <view class="button-line">
-    <view class="button-item1">
-      <view class="button-text1">按事务查找</view>
-    </view>
-    <view class="button-item2">
-      <view class="button-text2">按帮办单位查找</view>
-    </view>
-  </view>
+</mp-cells>
 </view>

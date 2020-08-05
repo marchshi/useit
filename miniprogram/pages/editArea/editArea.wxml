@@ -1,58 +1,39 @@
 <!--miniprogram/pages/editArea/editArea.wxml-->
 <view class="container">
-  <form class="form-column" bindsubmit="onSave">
-    <view class="edit-line">
-      <view class="line-text">
-        片区编号：
-      </view>
-      <input class="line-input" disabled="true" name="id" value="{{areainfo.id}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        片区名称：
-      </view>
-      <input class="line-input" name="areaName" value="{{areainfo.areaName}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        片区别名：
-      </view>
-      <input class="line-input" name="nickname" value="{{areainfo.nickname}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        负责部门：
-      </view>
-      <input class="line-input" name="dpmtName" value="{{areainfo.dpmtName}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        片区负责人：
-      </view>
-      <input class="line-input" name="userName" value="{{areainfo.userName}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        地块数：
-      </view>
-      <input class="line-input" name="blockNum" value="{{areainfo.blockNum}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        片区图片：
-      </view>
-      <input class="line-input" name="picture" value="{{areainfo.picture}}"></input>
-    </view>
-    <view class="edit-line">
-      <view class="line-text">
-        备注：
-      </view>
-      <input class="line-input" name="remark" value="{{areainfo.remark}}">
-
-      </input>
-    </view>
-    <button form-type="submit">保存</button>
-  </form>
+  <mp-form  id="form" rules="{{rules}}" models="{{areainfo}}" bindsubmit="onSave">
+    <mp-cells title="片区信息">
+      <mp-cell prop="id" title="片区编号" ext-class="">
+        <view class="user-text">{{areainfo.id}}</view>
+      </mp-cell>
+      <mp-cell id="user-cells" prop="areaName" title="片区名称" ext-class="">
+        <input bindinput="formInputChange" data-field="areaName" class="user-input" placeholder="请输入片区名称" value="{{areainfo.areaName}}"/>
+      </mp-cell>
+      <mp-cell  prop="nickname" title="片区别名" ext-class="">
+        <input bindinput="formInputChange" data-field="nickname" class="" placeholder="请输入片区别名" value="{{areainfo.nickname}}"/>
+      </mp-cell>
+      <mp-cell  prop="dpmt" title="负责部门" ext-class="">
+        <picker bindchange="bindDpmtChange" range-key="name" range="{{dpmtList}}">
+          <view class="picker">{{areainfo.dpmtName?areainfo.dpmtName:'请选择所属部门'}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="userName" title="片区负责人" ext-class="">
+        <picker bindchange="bindUserChange" range-key="name" range="{{userList}}">
+          <view class="picker">{{areainfo.userName?areainfo.userName:'请选择片区负责人'}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="picture" title="片区图片" ext-class="">
+        <input bindinput="formInputChange" data-field="picture" class="" value="{{areainfo.picture}}"/>
+      </mp-cell>
+      <mp-cell  prop="blockNum" title="地块数" ext-class="">
+        <input bindinput="formInputChange" data-field="blockNum" class="" value="{{areainfo.blockNum}}"/>
+      </mp-cell>
+      <mp-cell link hover url="/pages/blockList/blockList?id={{areainfo.id}}" value="地块管理"></mp-cell>
+      <mp-cell  prop="remark" title="备注" ext-class="">
+        <input bindinput="formInputChange" data-field="remark" class="" value="{{areainfo.remark}}"/>
+      </mp-cell>
+    </mp-cells>
+    <button type="primary" bindtap="onSubmit">保存</button>
+  </mp-form>
   
 </view>
 

@@ -1,8 +1,8 @@
 <!--miniprogram/pages/areaList/areaList.wxml-->
 <view class="container">
+<mp-cells title="片区列表">
   <view wx:for="{{areaList}}" wx:key="unique">
-    <navigator class="item" url="/pages/editArea/editArea?id={{item.id}}" open-type="navigate">
-      {{item.id}}  {{item.areaName}}
-    </navigator>
+    <mp-cell link hover url="/pages/editArea/editArea?id={{item.id}}" value="{{item.areaName}}"></mp-cell>
   </view>
+</mp-cells>
 </view>

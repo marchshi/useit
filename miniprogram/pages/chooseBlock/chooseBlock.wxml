@@ -1,0 +1,8 @@
+<!--miniprogram/pages/chooseBlock/chooseBlock.wxml-->
+<view class="container">
+<mp-cells title="地块列表">
+  <view wx:for="{{blockList}}" wx:key="unique">
+    <mp-cell link hover url="/pages/blcokinfo/blcokinfo?id={{item.id}}" value="{{item.blockName}}"></mp-cell>
+  </view>
+</mp-cells>
+</view>
