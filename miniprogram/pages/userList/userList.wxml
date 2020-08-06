@@ -1,8 +1,8 @@
 <!--miniprogram/pages/userList/userList.wxml-->
 <view class="container">
   <view>
-        <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-    </view>
+    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+  </view>
   <view class="titleline">
     <view>当前共有用户{{totalUser}}名</view>
     <button id="button-mini" type="primary" size="mini" bindtap="addUser">添加用户</button>

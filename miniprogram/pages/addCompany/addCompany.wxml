@@ -1,0 +1,25 @@
+<!--miniprogram/pages/addCompany/addCompany.wxml-->
+<view class="container">
+  <mp-form  id="form">
+    <mp-cells title="片区信息">
+      <mp-cell title="企业名称">
+        <input bindinput="formInputChange" data-field="areaName" class="user-input" placeholder="请输入企业名称" value="{{companyInfo.name}}"/>
+        <view slot="footer" class="weui-vcode-btn" bindtap="toChooseCompany" >选择</view>
+      </mp-cell>
+      <mp-cell title="统一社会信用代码">
+        <input bindinput="formInputChange" data-field="nickname" class="" placeholder="请输入统一社会信用代码" value="{{companyInfo.stdCode}}"/>
+      </mp-cell>
+      <mp-cell  prop="dpmt" title="负责部门" ext-class="">
+        <picker bindchange="bindDpmtChange" range-key="name" range="{{dpmtList}}">
+          <view class="picker">{{areainfo.dpmtName?areainfo.dpmtName:'请选择所属部门'}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="userName" title="片区负责人" ext-class="">
+        <picker bindchange="bindUserChange" range-key="name" range="{{userList}}">
+          <view class="picker">{{areainfo.userName?areainfo.userName:'请选择片区负责人'}}</view>
+        </picker>
+      </mp-cell>
+    </mp-cells>
+    <button type="primary" bindtap="onSubmit">保存</button>
+  </mp-form>
+</view>

@@ -18,7 +18,9 @@
     "pages/setBlockUser/setBlockUser",
     "pages/setCompanyUser/setCompanyUser",
     "pages/myBlockList/myBlockList",
-    "pages/myBlockInfo/myBlockInfo"
+    "pages/myBlockInfo/myBlockInfo",
+    "pages/addCompany/addCompany",
+    "pages/chooseCompany/chooseCompany"
   ],
   "tabBar": {
     "custom": false,
