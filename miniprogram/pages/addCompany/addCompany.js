@@ -65,8 +65,22 @@ Page({
   },
   
   toChooseCompany(){
+    const that = this;
     wx.navigateTo({
       url: '/pages/chooseCompany/chooseCompany',
+      events :{
+        getCompanyNameStdCode : function(res){
+          console.log(res)
+          console.log(that)
+          that.setData({
+            isChoose :true,
+            companyInfo :{
+              name : res.data.name,
+              stdCode : res.data.stdCode
+            }
+          })
+        }
+      }
     })
   }
 })

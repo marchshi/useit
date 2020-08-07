@@ -50,7 +50,15 @@ Page({
 
   },
   selectResult: function (e) {
-    console.log('select result', e.detail)
+    console.log('select result', e.detail);
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.emit("getCompanyNameStdCode",{
+      data :{
+        name : e.detail.item.name,
+        stdCode : e.detail.item.stdCode
+      }
+    })
+    wx.navigateBack();
   },
   search :function(value){
     console.log(value)
