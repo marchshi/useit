@@ -2,7 +2,7 @@
 <view class="container">
 <mp-cells title="我管理的地块">
   <view wx:for="{{blockList}}" wx:key="unique">
-    <mp-cell link hover url="/pages/myBlockInfo/myBlockInfo?id={{item.id}}" value="{{item.blockName}}"></mp-cell>
+    <mp-cell link hover url="/pages/myBlockInfo/myBlockInfo?areaid={{item.areaId}}&blockid={{item.id}}" value="{{item.blockName}}"></mp-cell>
   </view>
 </mp-cells>
 </view>

@@ -9,17 +9,25 @@
       <mp-cell title="统一社会信用代码">
         <input bindinput="formInputChange" data-field="stdCode" class="" placeholder="请输入统一社会信用代码" value="{{companyInfo.stdCode}}"/>
       </mp-cell>
-      <mp-cell  prop="dpmt" title="企业性质" ext-class="">
-        <picker bindchange="bindDpmtChange" range-key="name" range="{{dpmtList}}">
-          <view class="picker">{{areainfo.dpmtName?areainfo.dpmtName:'请选择所属部门'}}</view>
+      <mp-cell title="企业产权" ext-class="">
+        <picker bindchange="bindPropertytChange" range="{{property}}">
+          <view class="picker">{{companyInfo.property?companyInfo.property:'请选择企业产权'}}</view>
         </picker>
       </mp-cell>
-      <mp-cell  prop="userName" title="所在企业" ext-class="">
-        <picker bindchange="bindUserChange" range-key="name" range="{{userList}}">
-          <view class="picker">{{areainfo.userName?areainfo.userName:'请选择片区负责人'}}</view>
-        </picker>
-      </mp-cell>
+      <view wx:if="{{companyInfo.property=='租赁'}}">
+        <mp-cell title="企业类别" ext-class="">
+          <picker bindchange="bindClassChange" range-key="className" range="{{leaseClass}}">
+            <view class="picker">{{companyInfo.className?companyInfo.className:'请选择企业类别'}}</view>
+          </picker>
+        </mp-cell>
+        <mp-cell title="所在企业" ext-class="">
+          <picker bindchange="bindOwnChange" range-key="name" range="{{OwnList}}">
+            <view class="picker">{{companyInfo.ownCompanyName?companyInfo.ownCompanyName:'请选择所在企业'}}</view>
+          </picker>
+        </mp-cell>
+      </view>
+      
     </mp-cells>
-    <button type="primary" bindtap="onSubmit">保存</button>
+    <button type="primary" bindtap="onSubmit">添加</button>
   </mp-form>
 </view>
