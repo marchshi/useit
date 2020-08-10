@@ -20,7 +20,8 @@ Page({
       { class : "205",className : "施工队"},
       { class : "206",className : "未工商注册"},
     ],
-    property :["自有","租赁"]
+    property :["自有","租赁"],
+    ownCompanyList:[]
   },
   
   /**
@@ -29,7 +30,8 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      ['companyInfo.blockId'] : options.blockid+""
+      ['companyInfo.blockId'] : options.blockid+"",
+      ['companyInfo.areaId'] : options.areaid+""
     })
   },
 
@@ -44,7 +46,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const db = wx.cloud.database();
+    db.collection("company1").where({
+      blockId : this.data.companyInfo.blockId,
+      property : "自有"
+    }).get().then(res=>{
+      console.log(res)
+      this.setData({
+        ownCompanyList : res.data
+      })
+    })
   },
 
   /**
@@ -101,13 +112,16 @@ Page({
   bindClassChange(e){
     console.log(e)
     this.setData({
-      ["companyInfo.class"] : this.data.ownClass[parseInt(e.detail.value)].class,
-      ["companyInfo.className"] : this.data.ownClass[parseInt(e.detail.value)].className
+      ["companyInfo.class"] : this.data.leaseClass[parseInt(e.detail.value)].class,
+      ["companyInfo.className"] : this.data.leaseClass[parseInt(e.detail.value)].className
     })
   },
   bindOwnChange(e){
     console.log(e)
-    
+    this.setData({
+      ["companyInfo.ownCompanyId"] : this.data.ownCompanyList[parseInt(e.detail.value)]._id,
+      ["companyInfo.ownCompanyName"] : this.data.ownCompanyList[parseInt(e.detail.value)].name
+    })
   },
   onSubmit(){
     console.log(this.data.companyInfo)

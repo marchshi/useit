@@ -1,1 +1,4 @@
 /* miniprogram/pages/setCompanyUser/setCompanyUser.wxss */
+.picker{
+  margin-left: 100rpx;
+}

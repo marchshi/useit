@@ -21,7 +21,7 @@
           </picker>
         </mp-cell>
         <mp-cell title="所在企业" ext-class="">
-          <picker bindchange="bindOwnChange" range-key="name" range="{{OwnList}}">
+          <picker bindchange="bindOwnChange" range-key="name" range="{{ownCompanyList}}">
             <view class="picker">{{companyInfo.ownCompanyName?companyInfo.ownCompanyName:'请选择所在企业'}}</view>
           </picker>
         </mp-cell>

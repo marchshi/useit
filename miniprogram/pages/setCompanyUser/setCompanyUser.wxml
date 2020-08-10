@@ -1,2 +1,12 @@
 <!--miniprogram/pages/setCompanyUser/setCompanyUser.wxml-->
-<text>miniprogram/pages/setCompanyUser/setCompanyUser.wxml</text>
+<view class="container">
+<mp-cells title="地块列表">
+  <view wx:for="{{companyList}}" wx:for-index="index">
+    <mp-cell title="{{item.name}}">
+      <picker bindchange="bindUserChange" data-companyId="{{item._id}}" data-companyindex="{{index}}" range-key="name" range="{{userList}}">
+        <view class="picker" >{{item.userName?item.userName:'请选择地块员'}}</view>
+      </picker>
+    </mp-cell>
+  </view>
+</mp-cells>
+</view>

@@ -4,7 +4,6 @@
     "pages/me/me",
     "pages/search/search",
     "pages/cmpinfo/cmpinfo",
-    "pages/mycmp/mycmp",
     "pages/userList/userList",
     "pages/editUser/editUser",
     "pages/areaList/areaList",
@@ -20,7 +19,9 @@
     "pages/myBlockList/myBlockList",
     "pages/myBlockInfo/myBlockInfo",
     "pages/addCompany/addCompany",
-    "pages/chooseCompany/chooseCompany"
+    "pages/chooseCompany/chooseCompany",
+    "pages/myCompany/myCompany",
+    "pages/editCompany/editCompany"
   ],
   "tabBar": {
     "custom": false,

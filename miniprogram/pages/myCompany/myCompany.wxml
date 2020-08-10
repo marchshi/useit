@@ -1,0 +1,8 @@
+<!--miniprogram/pages/myCompany/myCompany.wxml-->
+<view class="container">
+<mp-cells title="我挂钩的企业">
+  <view wx:for="{{companyList}}" wx:key="unique">
+    <mp-cell link hover url="/pages/editCompany/editCompany?id={{item._id}}" value="{{item.name}}"></mp-cell>
+  </view>
+</mp-cells>
+</view>
