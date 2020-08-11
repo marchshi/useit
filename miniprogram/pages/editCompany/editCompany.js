@@ -5,7 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id :"",
+    companyInfo:[],
+    authList:["2","6","9"],
+    dpmtList:[],
+    pageType:"edit",
+    dialogShow: false,
+    buttons: [{text: '取消'}, {text: '确定'}],
+    rules: [{
+      name: 'name',
+      rules: {required: true, message: '请填写姓名'},
+    }, {
+      name: 'wxTel',
+      rules: [{required: true, message: '请填写微信绑定的手机号'},{mobile: true, message: '手机号格式不对'}],
+    }, {
+      name: 'tel',
+      rules: [{required: true, message: '请填写微信绑定的手机号'},{mobile: true, message: '手机号格式不对'}],
+    }, {
+      name: 'dpmt',
+      rules: {required: true, message: '请填写部门'},
+    }, {
+      name: 'auth',
+      rules: {required: true, message: '请选择用户权限'},
+    }]
   },
 
   /**

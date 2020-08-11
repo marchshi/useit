@@ -1,2 +1,64 @@
 <!--miniprogram/pages/editCompany/editCompany.wxml-->
-<text>miniprogram/pages/editCompany/editCompany.wxml</text>
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+  <mp-form  id="form" rules="{{rules}}" models="{{companyInfo}}" bindsubmit="onSave">
+    <mp-cells title="企业信息">
+      <mp-cell prop="name" title="企业名称" ext-class="">
+        <view class="user-text">{{companyInfo.name}}</view>
+      </mp-cell>
+      <mp-cell prop="stdCode" title="统一社会信用代码" ext-class="">
+        <view >{{companyInfo.stdCode}}</view>
+      </mp-cell>
+      <mp-cell prop="property" title="产权性质" ext-class="">
+        <view >{{companyInfo.property}}</view>
+      </mp-cell>
+      <mp-cell  prop="ownCompany" title="所在企业" ext-class="">
+        <view >{{companyInfo.ownCompanyName}}</view>
+      </mp-cell>
+      <mp-cell  prop="class" title="企业类别" ext-class="">
+        <view >{{companyInfo.className}}</view>
+      </mp-cell>
+      <mp-cell  prop="area" title="所在片区" ext-class="">
+        <view >{{companyInfo.areaName}}</view>
+      </mp-cell>
+      <mp-cell  prop="block" title="所在地块" ext-class="">
+        <view >{{companyInfo.blockName}}</view>
+      </mp-cell>
+      <mp-cell  prop="userName" title="网格员姓名" ext-class="">
+        <view >{{companyInfo.userName}}</view>
+      </mp-cell>
+      <mp-cell  prop="userTel" title="网格员电话" ext-class="">
+        <view >{{companyInfo.userTel}}</view>
+      </mp-cell>
+      <mp-cell prop="companyState" title="企业状态" ext-class="">
+        <picker bindchange="bindStateChange" range="{{stateList}}">
+          <view class="picker">{{companyInfo.companyState?companyInfo.companyState:'请选择企业状态'}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="address" title="地址" ext-class="">
+        <input bindinput="formInputChange" data-field="address" class="" placeholder="请输入企业地址" value="{{companyInfo.address}}"/>
+      </mp-cell>
+      <mp-cell  prop="address" title="帮办单位" ext-class="">
+        <input bindinput="formInputChange" data-field="address" class="" placeholder="请输入企业地址" value="{{companyInfo.address}}"/>
+      </mp-cell>
+      <mp-cell  prop="title" title="职务" ext-class="">
+        <input bindinput="formInputChange" data-field="title" class="" placeholder="请输入职务" value="{{userinfo.title}}"/>
+      </mp-cell>
+      <mp-cell  prop="auth" title="权限" ext-class="">
+        <picker bindchange="bindAuthChange" range="{{authList}}">
+          <view class="picker">{{userinfo.auth?userinfo.auth:'请选择用户权限'}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell  prop="remark" title="备注" ext-class="">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+        </view>
+      </mp-cell>
+    </mp-cells>
+    <button type="primary" bindtap="onSubmit">{{pageType=="add"?"添加":"保存"}}</button>
+    <button wx:if="{{pageType=='edit'}}" type="warn" plain="false" bindtap="onDelete">删除</button>
+  </mp-form>
+  <mp-dialog title="注意" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view>你确定要删除此用户吗？</view>
+  </mp-dialog>
+</view>
