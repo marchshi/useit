@@ -30,11 +30,4 @@
     请输入个人预留党政办的电话进行验证，验证失败请联系管理员
   </view>
   
-  <view wx:if="{{logined}}" class="me-list">
-    <view class="me-item" bindtap="toTestWeui">
-      测试weui按钮
-    </view>
-  </view>
-
-
 </view>
