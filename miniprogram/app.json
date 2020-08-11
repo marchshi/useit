@@ -9,7 +9,6 @@
     "pages/areaList/areaList",
     "pages/editArea/editArea",
     "pages/chooseArea/chooseArea",
-    "pages/testWeui/testWeui",
     "pages/blockList/blockList",
     "pages/editBlock/editBlock",
     "pages/chooseBlock/chooseBlock",
