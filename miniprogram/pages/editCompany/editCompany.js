@@ -34,7 +34,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const db = wx.cloud.database();
+    db.collection("company1").where({
+      _id : options.id
+    }).get().then(res=>{
+      console.log(res)
+      let companyInfo = res.data[0];
+      db.collection("user").where({
+        id : companyInfo.userId
+      }).get().then(res1=>{
+        console.log(res1)
+        let tel = res1.data[0].tel;
+        let name = res1.data[0].name;
+        this.setData({
+          companyInfo : res.data[0],
+          ['companyInfo.userTel'] : tel
+        })
+      })
+      
+    })
+    
   },
 
   /**

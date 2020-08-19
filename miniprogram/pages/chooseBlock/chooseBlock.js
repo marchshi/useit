@@ -13,12 +13,12 @@ Page({
    */
   onLoad: function (options) {
     const db = wx.cloud.database();
-    db.collection("area").where({
-      id : options.id
+    db.collection("block").where({
+      areaId : options.id
     }).get().then(res=>{
       console.log(res)
       this.setData({
-        blockList : res.data[0].blockList
+        blockList : res.data
       })
     }).catch(e=>console.log(e))
   },
