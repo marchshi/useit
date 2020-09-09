@@ -40,6 +40,10 @@ Page({
     }).get().then(res=>{
       console.log(res)
       let companyInfo = res.data[0];
+      this.setData({
+        companyInfo : companyInfo
+      })
+      //获取网格员的相关信息
       db.collection("user").where({
         id : companyInfo.userId
       }).get().then(res1=>{
@@ -47,11 +51,19 @@ Page({
         let tel = res1.data[0].tel;
         let name = res1.data[0].name;
         this.setData({
-          companyInfo : res.data[0],
           ['companyInfo.userTel'] : tel
         })
       })
-      
+      //获取内部租赁企业的相关信息
+      db.collection("company1").where({
+        ownCompanyId : companyInfo._id
+      }).get().then(res2=>{
+        console.log(res2)
+        let leaseCompanyList = res2.data;
+        this.setData({
+          ['companyInfo.leaseCompanyList'] : leaseCompanyList
+        })
+      })
     })
     
   },

@@ -78,5 +78,19 @@ Page({
   },
   onShareAppMessage: function () {
     
+  },
+
+  testCloudFunction(){
+    wx.cloud.callFunction({
+      name: 'getBasicDetailsByName',
+      data :{
+        name :"江苏西格尔汽车内饰件有限公司"
+      },
+      success: function (res) {
+        console.log(res);
+        
+      },
+      fail: console.error
+    })
   }
 })

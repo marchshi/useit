@@ -54,7 +54,7 @@ Page({
     let blockId = this.data.blockId;
     let areaId = this.data.areaId;
     wx.navigateTo({
-      url: '/pages/addCompany/addCompany?areaid=' + areaId +'&blockid=' + blockId,
+      url: '/pages/addCompany/addCompany?type="add"&areaid=' + areaId +'&blockid=' + blockId,
     })
   }
 })

@@ -1,25 +1,28 @@
 <!--miniprogram/pages/addCompany/addCompany.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="container">
   <mp-form  id="form">
     <mp-cells title="片区信息">
-      <mp-cell title="企业名称">
+      <mp-cell title="企业名称" prop="name">
         <input bindinput="formInputChange" data-field="name" class="user-input" placeholder="请输入企业名称" value="{{companyInfo.name}}"/>
         <view slot="footer" class="weui-vcode-btn" bindtap="toChooseCompany" >选择</view>
       </mp-cell>
-      <mp-cell title="统一社会信用代码">
+      <mp-cell title="统一社会信用代码" prop="stdCode">
         <input bindinput="formInputChange" data-field="stdCode" class="" placeholder="请输入统一社会信用代码" value="{{companyInfo.stdCode}}"/>
       </mp-cell>
-      <mp-cell title="企业产权" ext-class="">
+      <mp-cell title="企业产权" prop="property">
         <picker bindchange="bindPropertytChange" range="{{property}}">
           <view class="picker">{{companyInfo.property?companyInfo.property:'请选择企业产权'}}</view>
         </picker>
       </mp-cell>
-      <view wx:if="{{companyInfo.property=='租赁'}}">
-        <mp-cell title="企业类别" ext-class="">
-          <picker bindchange="bindClassChange" range-key="className" range="{{leaseClass}}">
+      <view wx:if="{{companyInfo.property!=''}}">
+        <mp-cell title="企业类别" prop="className">
+          <picker bindchange="bindClassChange" range-key="className" range="{{classList}}">
             <view class="picker">{{companyInfo.className?companyInfo.className:'请选择企业类别'}}</view>
           </picker>
         </mp-cell>
+      </view>
+      <view wx:if="{{companyInfo.property=='租赁'}}">
         <mp-cell title="所在企业" ext-class="">
           <picker bindchange="bindOwnChange" range-key="name" range="{{ownCompanyList}}">
             <view class="picker">{{companyInfo.ownCompanyName?companyInfo.ownCompanyName:'请选择所在企业'}}</view>
@@ -28,6 +31,10 @@
       </view>
       
     </mp-cells>
-    <button type="primary" bindtap="onSubmit">添加</button>
+    <button type="primary" bindtap="onSubmit">保存</button>
+    <button wx:if="{{type=='edit'}}" type="warn" bindtap="onSubmit">删除</button>
   </mp-form>
+  <mp-dialog title="添加失败" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="[{text: '确定'}]">
+    <view>{{dialogText}}</view>
+  </mp-dialog>
 </view>

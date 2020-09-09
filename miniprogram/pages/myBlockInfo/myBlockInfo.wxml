@@ -3,7 +3,7 @@
   <button type="primary" bindtap="toAddCompany">添加</button>
   <mp-cells title="当前地块企业列表">
   <view wx:for="{{companyList}}" wx:key="unique">
-    <mp-cell link hover url="/pages/addCompany/addCompany?item={{item}}">
+    <mp-cell link hover url="/pages/addCompany/addCompany?type='edit'&id={{item._id}}">
       {{item.name}}  {{item.property}}
     </mp-cell>
   </view>

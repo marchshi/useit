@@ -27,11 +27,11 @@
   </view>
 
   <view class="button-line">
-    <view class="button-item1">
-      <view class="button-text1">按事务查找</view>
+    <view class="button-item1" bindtap="testCloudFunction">
+      <view class="button-text1">测试云函数</view>
     </view>
     <view class="button-item2">
-      <view class="button-text2">我挂钩的 企业</view>
+      <view class="button-text2">我挂钩的企业</view>
     </view>
   </view>
 
