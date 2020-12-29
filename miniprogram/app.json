@@ -20,7 +20,8 @@
     "pages/addCompany/addCompany",
     "pages/chooseCompany/chooseCompany",
     "pages/myCompany/myCompany",
-    "pages/editCompany/editCompany"
+    "pages/editCompany/editCompany",
+    "pages/webView/webView"
   ],
   "tabBar": {
     "custom": false,

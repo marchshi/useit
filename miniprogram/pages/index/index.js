@@ -11,7 +11,9 @@ Page({
     logined : false,
     authInfo : [],
     collectList : [],
-    collectArray : []
+    collectArray : [],
+    swiperHeight : "150px",
+    loginCode : ""
   },
 
   //需要在index界面获取登录信息，如果登录信息没有返回，且用户切换切面，则可能出现bug
@@ -56,7 +58,16 @@ Page({
       }
     })
   },
-
+  swiperHeight:function(e){
+    console.log(e)
+    var winWid = wx.getSystemInfoSync().windowWidth; //获取当前屏幕的宽度
+    var imgh=e.detail.height;//图片高度
+    var imgw=e.detail.width;//图片宽度
+    var swiperH=winWid*imgh/imgw + "px"//等比设置swiper的高度。 即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  ==》swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+    this.setData({
+      swiperHeight:swiperH//设置高度
+    })
+  },
   onSearchTap: function(){
     if (this.data.logined){
       wx.navigateTo({
@@ -89,6 +100,46 @@ Page({
       success: function (res) {
         console.log(res);
         
+      },
+      fail: console.error
+    })
+  },
+  testWebView(){
+    wx.navigateTo({
+      url: "/pages/webView/webView",
+    })
+  },
+  onCodeInput(e){
+    let value = e.detail.value.trim();
+    this.setData({
+      loginCode : value,
+    })
+    console.log(value)
+  },
+  onCodeLogin(e){
+    const _this = this;
+    console.log(this);
+    wx.cloud.callFunction({
+      name: 'codeLogin',
+      data:{
+        loginCode : (_this.data.loginCode +"").trim()
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.result.code=="success"){
+          getApp().data.logined = true;
+          getApp().data.authInfo = res.result.data;
+          _this.setData({
+            logined: true,
+            authInfo : res.result.data
+          })
+        }else{
+          wx.showToast({
+            title: '登录失败，请输入预留的手机号码',
+            duration: 2000,
+            icon: 'none'
+          })
+        }
       },
       fail: console.error
     })

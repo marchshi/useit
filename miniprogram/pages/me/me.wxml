@@ -1,6 +1,6 @@
 <!--miniprogram/pages/me/me.wxml-->
 
-<view >
+<view class="container" wx:if="{{false}}">
 
   <!-- 用户信息部分 -->
   <view  class="login-head">
@@ -30,4 +30,11 @@
     请输入个人预留党政办的电话进行验证，验证失败请联系管理员
   </view>
   
+</view>
+<view wx:else class="login-view">
+  <input class="lg-input" type="number" placeholder="请输入身份识别码" bindinput="onInput" >
+  </input>
+  <view class="lg-button" bindtap="onTelLogin">
+    验证
+  </view>
 </view>

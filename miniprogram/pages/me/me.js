@@ -69,7 +69,6 @@ Page({
     })
   },
   onTelLogin(){
-    //调用云函数获取当前账号是否登录
     const _this = this;
     console.log(this);
     wx.cloud.callFunction({
