@@ -16,15 +16,14 @@ Page({
     loginCode : ""
   },
 
-  //需要在index界面获取登录信息，如果登录信息没有返回，且用户切换切面，则可能出现bug
+  //首先通过openid看是否绑定过账号，如没有绑定则登录失败，需要输入识别码
   onLoad: function() {
-
+    //获取登录信息，防止用户切换画面出现数据不同步的bug
     console.log("index界面的onload函数");
     wx.showLoading({
       title: '正在连接服务器',
       mask: true,
     })
-
   },
 
   /**
@@ -35,20 +34,18 @@ Page({
     //1,获取登录状态
     //调用云函数获取当前账号是否登录
     const _this = this;
-    
     wx.cloud.callFunction({
-      name: 'getuserinfo',
+      name: 'getUserAccount',
       success: function (res) {
         console.log(res);
         if (res.result.code=="success"){
           getApp().data.logined = true;
-          getApp().data.authInfo = res.result.data.authInfo;
-          getApp().data.collectList = res.result.data.userInfo.collectList;
+          getApp().data.userInfo = res.result.data.userInfo;
+          getApp().data.accountInfo = res.result.data.accountInfo;
           _this.setData({
             logined: true,
-            authInfo : res.result.data.authInfo,
-            collectObj: res.result.data.userInfo.collectList,
-            collectArray: res.result.data.collectArray
+            userInfo : res.result.data.userInfo,
+            accountInfo: res.result.data.accountInfo
           })
         }
       },
@@ -69,18 +66,9 @@ Page({
     })
   },
   onSearchTap: function(){
-    if (this.data.logined){
-      wx.navigateTo({
-        url: "/pages/search/search"
-      })
-    }else{
-      wx.showToast({
-        title: '请先登录，在下方我的中输入手机号进行验证',
-        duration: 2000,
-        icon: 'none'
-      })
-    }
-    
+    wx.navigateTo({
+      url: "/pages/search/search"
+    })
   },
   toChooseArea(){
     wx.navigateTo({
@@ -99,7 +87,6 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        
       },
       fail: console.error
     })
@@ -118,30 +105,37 @@ Page({
   },
   onCodeLogin(e){
     const _this = this;
-    console.log(this);
-    wx.cloud.callFunction({
-      name: 'codeLogin',
-      data:{
-        loginCode : (_this.data.loginCode +"").trim()
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.result.code=="success"){
-          getApp().data.logined = true;
-          getApp().data.authInfo = res.result.data;
-          _this.setData({
-            logined: true,
-            authInfo : res.result.data
-          })
-        }else{
-          wx.showToast({
-            title: '登录失败，请输入预留的手机号码',
-            duration: 2000,
-            icon: 'none'
-          })
-        }
-      },
-      fail: console.error
-    })
+    if(this.data.loginCode.match("^[0-9]{6}$")){
+      wx.cloud.callFunction({
+        name: 'codeLogin',
+        data:{
+          loginCode : (_this.data.loginCode +"").trim()
+        },
+        success: function (res) {
+          console.log(res);
+          if (res.result.code=="success"){
+            getApp().data.logined = true;
+            getApp().data.authInfo = res.result.data;
+            _this.setData({
+              logined: true,
+              authInfo : res.result.data
+            })
+          }else{
+            wx.showToast({
+              title: res.result.data,
+              duration: 2000,
+              icon: 'none'
+            })
+          }
+        },
+        fail: console.error
+      })
+    }else{
+      wx.showToast({
+        title: '请输入六位数字识别码！',
+        icon : "none",
+      })
+    }
+    
   }
 })

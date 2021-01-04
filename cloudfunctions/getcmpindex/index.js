@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
     cmpName: true,
     _id : false
   })
-  .limit(1000)
+  .limit(2000)
   .get();
   console.log(result);
   return {

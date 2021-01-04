@@ -1,24 +1,25 @@
-用户信息表user，账户信息表acount，片区信息表area，地块信息表block，部门信息表dpmt，企业信息表company，企业库companyStore，工商接口interface
+用户信息表user，账户信息表acount，部门信息表dpmt，片区信息表area，地块信息表block，企业信息表company，企业库companyStore，工商接口interface
 
 user表 用户信息表
 _id	内部编号
 name	姓名（外部编号）
 tel	电话
 dpmt	部门
-dpmtid	部门编号
+dpmtId	部门编号
 title	职务
-idcode	身份码
+idCode	身份码
 
-acount表 账户信息表
+account表 账户信息表
 _id	账户编号
 openid	账户识别码
 userid	用户编号
 collectlist	收藏列表（列表内为企业编号）	
 账户相关的权限
 
-dpmt表 部门表	一办一部四局、四中心、平台、开发区（领导班子）、
+dpmt表 部门表	一办一部四局、开发区（领导班子）、四中心、纪工委、工会、平台
 id	部门编号
 name	部门名称
+areaId 挂钩片区编号
 
 class表 企业类别表
 id	类别编号
@@ -26,9 +27,9 @@ name	名称
 
 area表 片区信息表
 id	片区编号
-areaname	片区名称
-nickname	片区别名
-blocknum	地块数目
+areaname	片区名称-东南片区
+nickname	片区别名-一片区
+blocknumb	地块数目
 blocklist	地块列表
 dpmtid	部门编号
 dpmtname部门名称

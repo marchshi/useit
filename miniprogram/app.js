@@ -2,7 +2,8 @@
 App({
   data :{
     logined : false,
-    authInfo : [],
+    userInfo : {},
+    accountInfo : {},
     collectList : [],
     cmpList : []
   },
