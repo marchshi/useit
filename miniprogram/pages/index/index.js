@@ -65,7 +65,7 @@ Page({
       swiperHeight:swiperH//设置高度
     })
   },
-  onSearchTap: function(){
+  onOldSearchTap: function(){
     wx.navigateTo({
       url: "/pages/search/search"
     })
@@ -76,7 +76,6 @@ Page({
     })
   },
   onShareAppMessage: function () {
-    
   },
 
   testCloudFunction(){
@@ -96,6 +95,7 @@ Page({
       url: "/pages/webView/webView",
     })
   },
+
   onCodeInput(e){
     let value = e.detail.value.trim();
     this.setData({
@@ -106,19 +106,30 @@ Page({
   onCodeLogin(e){
     const _this = this;
     if(this.data.loginCode.match("^[0-9]{6}$")){
+      wx.showLoading({
+        title: '正在连接服务器',
+        mask: true,
+      })
       wx.cloud.callFunction({
         name: 'codeLogin',
         data:{
           loginCode : (_this.data.loginCode +"").trim()
         },
         success: function (res) {
+          wx.hideLoading();
           console.log(res);
           if (res.result.code=="success"){
             getApp().data.logined = true;
-            getApp().data.authInfo = res.result.data;
+            getApp().data.userInfo = res.result.data.userInfo;
+            getApp().data.accountInfo = res.result.data.accountInfo;
             _this.setData({
               logined: true,
-              authInfo : res.result.data
+              userInfo : res.result.data.userInfo,
+              accountInfo : res.result.data.accountInfo
+            })
+            wx.showToast({
+              title: res.result.data.userInfo.name+",欢迎使用！",
+              duration: 2000,
             })
           }else{
             wx.showToast({
@@ -128,7 +139,10 @@ Page({
             })
           }
         },
-        fail: console.error
+        fail: ()=>{
+          wx.hideLoading(); 
+          console.error
+        }
       })
     }else{
       wx.showToast({
@@ -136,6 +150,5 @@ Page({
         icon : "none",
       })
     }
-    
   }
 })

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view wx:if="{{false}}" class="container">
+<view wx:if="{{logined}}" class="container">
   <view class="bg-search">
     <view class="index-search"  bindtap="onSearchTap">
       <image class="icon_search" src="../../images/icon-search.png"></image>
@@ -19,47 +19,49 @@
   </view>
   
   <view class="button-line">
-    <view class="button-item1" bindtap="toChooseArea">
-      <view class="button-text1">按地块查找</view>
+    <view class="button-item" style="background:#dc4e41" bindtap="toChooseArea">
+      <view class="button-text">按地块查找</view>
     </view>
-    <view class="button-item2">
-      <view class="button-text2">按帮办单位查找</view>
+    <view class="button-item" style="background:#fecc42">
+      <view class="button-text" >按帮办单位查找</view>
+    </view>
+  </view>
+  
+  <view class="button-line">
+    <view class="button-item" style="background:#1a9f5f" bindtap="toChooseArea">
+      <view class="button-text">按企业类别查找</view>
+    </view>
+    <view class="button-item" style="background:#4a8af3" bindtap="onOldSearchTap">
+      <view class="button-text">旧的搜索入口</view>
     </view>
   </view>
 
   <view class="button-line">
-    <view class="button-item1" bindtap="testCloudFunction">
-      <view class="button-text1">测试云函数</view>
+    <view class="button-item" style="background:#9f0099" bindtap="testCloudFunction">
+      <view class="button-text">我收藏的企业</view>
     </view>
-    <view class="button-item2" bindtap="testWebView">
-      <view class="button-text2">我挂钩的企业</view>
+    <view class="button-item" style="background:#f8d5d8" bindtap="testWebView">
+      <view class="button-text">我挂钩的企业</view>
     </view>
   </view>
   
   <view>
     <view class="index-text">
-      我的收藏
+      以下界面待完善
     </view>
   </view>
-
   <view wx:for="{{collectArray}}" wx:key="unique">
     <navigator class="collect-item" url="/pages/cmpinfo/cmpinfo?cmpId={{item.cmpId}}" open-type="navigate">
       {{item.cmpName}}
     </navigator>
   </view>
 
-  <view wx:if="{{!logined}}" class="index-login">
-    请点击左下方-我的，进行验证手机号操作
-  </view>
-  <view wx:if="{{logined&&collectArray.length==0}}" class="index-login">
-    可在企业详情的右上角添加收藏
-  </view>
 </view>
 <view wx:else class="login-view">
   <view class="lg-line">
-    <input class="tel-input" type="number" maxlength="6" placeholder="请输入身份识别码" bindinput="onCodeInput" >
+    <input type="number" maxlength="6" placeholder="请输入身份识别码" bindinput="onCodeInput" >
     </input>
-    <button size="mini" type="primary" class="login-button" bindtap="onCodeLogin">
+    <button size="mini" type="primary" bindtap="onCodeLogin">
       验证
     </button>
   </view>

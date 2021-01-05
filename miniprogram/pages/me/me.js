@@ -10,10 +10,8 @@ Page({
     logged: false,
     inputText :"",
     logined : false,
-    authInfo : {
-
-    },
-    test1:"测试数据"
+    test1:"测试数据",
+    loginCode : ""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -41,25 +39,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("onshow")
+    console.log(getApp().data)
     if (getApp().data.logined){
       this.setData({
         logined : true,
-        authInfo : getApp().data.authInfo
+        userInfo : getApp().data.userInfo
       })
     }
-    
-  },
-
-  /**
-   * 
-   */
-  getPhoneNumber: function (e) {
-
-    console.log(e.detail);
-    //1、首先获取openid,通过openid在后台获取手机号然后判断有无权限
-    //2、如果openid没有绑定手机号，则获取手机号来进行绑定。
-    //3、获取手机号成功后，则将手机号发送至后台验证，同时绑定手机号与opneid
-    //4、验证成功则获取相关权限
   },
 
   onInput(e){
@@ -68,37 +55,8 @@ Page({
       inputText : value,
     })
   },
-  onTelLogin(){
-    const _this = this;
-    console.log(this);
-    wx.cloud.callFunction({
-      name: 'telLogin',
-      data:{
-        tel : _this.data.inputText +""
-      },
-      success: function (res) {
-        console.log(res);
-        if (res.result.code=="success"){
-          getApp().data.logined = true;
-          getApp().data.authInfo = res.result.data;
-          _this.setData({
-            logined: true,
-            authInfo : res.result.data
-          })
-        }else{
-          wx.showToast({
-            title: '登录失败，请输入预留的手机号码',
-            duration: 2000,
-            icon: 'none'
-          })
-        }
-      },
-      fail: console.error
-    })
-  },
   //点击跳转页面
   toMyCmp(){
-    console.log("111111")
     wx.navigateTo({
       url: "/pages/mycmp/mycmp",
     })
@@ -122,6 +80,62 @@ Page({
   },
   onShareAppMessage: function () {
 
+  },
+
+  onCodeInput(e){
+    let value = e.detail.value.trim();
+    this.setData({
+      loginCode : value,
+    })
+    console.log(value)
+  },
+  onCodeLogin(e){
+    const _this = this;
+    if(this.data.loginCode.match("^[0-9]{6}$")){
+      wx.showLoading({
+        title: '正在连接服务器',
+        mask: true,
+      })
+      wx.cloud.callFunction({
+        name: 'codeLogin',
+        data:{
+          loginCode : (_this.data.loginCode +"").trim()
+        },
+        success: function (res) {
+          wx.hideLoading();
+          console.log(res);
+          if (res.result.code=="success"){
+            getApp().data.logined = true;
+            getApp().data.userInfo = res.result.data.userInfo;
+            getApp().data.accountInfo = res.result.data.accountInfo;
+            _this.setData({
+              logined: true,
+              userInfo : res.result.data.userInfo,
+              accountInfo : res.result.data.accountInfo
+            })
+            wx.showToast({
+              title: res.result.data.userInfo.name+",欢迎使用！",
+              duration: 2000,
+            })
+          }else{
+            wx.showToast({
+              title: res.result.data,
+              duration: 2000,
+              icon: 'none'
+            })
+          }
+        },
+        fail: ()=>{
+          wx.hideLoading(); 
+          console.error
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请输入六位数字识别码！',
+        icon : "none",
+      })
+    }
   }
 
 })

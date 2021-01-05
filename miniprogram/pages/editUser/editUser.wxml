@@ -9,9 +9,6 @@
       <mp-cell id="user-cells" prop="name" title="姓名" ext-class="">
         <input bindinput="formInputChange" data-field="name" class="user-input" placeholder="请输入姓名" value="{{userinfo.name}}"/>
       </mp-cell>
-      <mp-cell  prop="wxTel" title="微信绑定的手机号" ext-class="">
-        <input bindinput="formInputChange" data-field="wxTel" class="" placeholder="请输入微信绑定的手机号" type="number" value="{{userinfo.wxTel}}"/>
-      </mp-cell>
       <mp-cell  prop="tel" title="联系电话" ext-class="">
         <input bindinput="formInputChange" data-field="tel" class="" placeholder="请输入联系电话" type="number" value="{{userinfo.tel}}"/>
       </mp-cell>
@@ -27,11 +24,6 @@
         <picker bindchange="bindAuthChange" range="{{authList}}">
           <view class="picker">{{userinfo.auth?userinfo.auth:'请选择用户权限'}}</view>
         </picker>
-      </mp-cell>
-      <mp-cell  prop="remark" title="备注" ext-class="">
-        <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
-        </view>
       </mp-cell>
     </mp-cells>
     <button type="primary" bindtap="onSubmit">{{pageType=="add"?"添加":"保存"}}</button>

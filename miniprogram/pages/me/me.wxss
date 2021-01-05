@@ -1,6 +1,10 @@
 /* miniprogram/pages/me/me.wxss */
-page{
+page {
+  background-color: #F8F8F8;
   height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
 }
 .container {
   width: auto;
@@ -20,22 +24,8 @@ page{
   justify-content: center;
   align-items: center;
 }
-.tel-input{
-  height: 50rpx;
-  width: 60%;
-  padding: 20rpx;
-  background-color: #eeeeee;
-  font-size: large;
-}
-.login-button{
-  width: 320rpx;
-  height: 80rpx;
-  background-color: antiquewhite;
-  border-radius: 30rpx;
-  margin-top: 30rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cell-list{
+  width: 90%;
 }
 .login-title{
   font-size: x-large;
@@ -46,28 +36,4 @@ page{
   font-size: small;
   color: #eeeeee;
   margin-top: 20rpx;
-}
-.me-tip{
-  display: flex;
-  padding: 15%;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.me-list{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.me-item{
-  width: 100%;
-  background-color: #ffffff;
-  font-size: large;
-  margin-top: 20rpx;
-  padding-left: 60rpx;
-  padding-right: 30rpx;
-  padding-top: 15rpx;
-  padding-bottom: 15rpx
 }

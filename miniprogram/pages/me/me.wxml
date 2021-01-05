@@ -1,24 +1,18 @@
 <!--miniprogram/pages/me/me.wxml-->
 
-<view class="container" wx:if="{{false}}">
+<view class="container" wx:if="{{logined}}">
 
   <!-- 用户信息部分 -->
   <view  class="login-head">
-    <input wx:if="{{!logined}}" class="tel-input" type="number" placeholder="请输入手机号码" bindinput="onInput" >
-
-    </input>
-    <view wx:if="{{!logined}}" class="login-button" bindtap="onTelLogin">
-      验收手机号
+    <view class="login-title">
+      {{userInfo.dpmt}} {{userInfo.name}}
     </view>
-    <view wx:if="{{logined}}" class="login-title">
-      {{authInfo.dpmt}} {{authInfo.name}}
-    </view>
-    <view wx:if="{{logined}}" class="login-text">
+    <view class="login-text">
       您已登录，欢迎使用！
     </view>
   </view>
 
-  <mp-cells title="">
+  <mp-cells class="cell-list" title="">
     <mp-cell link hover url="/pages/userList/userList" value="(管理员)人员管理"></mp-cell>
     <mp-cell link hover url="/pages/areaList/areaList" value="(管理员)片区管理"></mp-cell>
     <mp-cell link hover url="/pages/setBlockUser/setBlockUser?areaid=1&dpmtid=1" value="(片区负责人)指定地块员"></mp-cell>
@@ -26,15 +20,14 @@
     <mp-cell link hover url="/pages/myBlockList/myBlockList?id=126" value="(地块员)我管理的地块"></mp-cell>
     <mp-cell link hover url="/pages/myCompany/myCompany?id=126" value="(网格员)我挂钩的企业"></mp-cell>
   </mp-cells>
-  <view wx:if="{{!logined}}" class="me-tip">
-    请输入个人预留党政办的电话进行验证，验证失败请联系管理员
-  </view>
   
 </view>
 <view wx:else class="login-view">
-  <input class="lg-input" type="number" placeholder="请输入身份识别码" bindinput="onInput" >
-  </input>
-  <view class="lg-button" bindtap="onTelLogin">
-    验证
+  <view class="lg-line">
+    <input type="number" maxlength="6" placeholder="请输入身份识别码" bindinput="onCodeInput" >
+    </input>
+    <button size="mini" type="primary" bindtap="onCodeLogin">
+      验证
+    </button>
   </view>
 </view>

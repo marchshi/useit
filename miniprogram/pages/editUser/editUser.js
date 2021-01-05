@@ -16,9 +16,6 @@ Page({
       name: 'name',
       rules: {required: true, message: '请填写姓名'},
     }, {
-      name: 'wxTel',
-      rules: [{required: true, message: '请填写微信绑定的手机号'},{mobile: true, message: '手机号格式不对'}],
-    }, {
       name: 'tel',
       rules: [{required: true, message: '请填写微信绑定的手机号'},{mobile: true, message: '手机号格式不对'}],
     }, {
@@ -51,7 +48,7 @@ Page({
     const db = wx.cloud.database();
     if(this.data.pageType=="add"){
       db.collection("user").orderBy("id","desc").limit(1).get().then(res1=>{
-        db.collection("department").where({all : null}).field({
+        db.collection("dpmt").where({all : null}).field({
           _id : false
         }).get().then(res2=>{
           this.setData({
@@ -63,10 +60,9 @@ Page({
       })
     }else{
       db.collection('user').where({
-        id : this.data.id
+        _id : this.data.id
       }).get().then(res1=>{
-        delete res1.data[0]._id;
-        db.collection("department").where({all : null}).field({
+        db.collection("dpmt").where({all : null}).field({
           _id : false
         }).get().then(res2=>{
           this.setData({

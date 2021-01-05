@@ -28,7 +28,7 @@ search: function (value) {
     if((value+"").length != 0){
       for(let item of userList){
         if(item.name.toString().indexOf(value) != -1){
-          item.text = item.name;
+          item.text = item.dpmt +'\t' +  item.name +'\t' + item.idCode  ;
           searchList.push(item)
         }
       }
@@ -40,7 +40,7 @@ search: function (value) {
 selectResult: function (e) {
     console.log('select result', e.detail)
     wx.navigateTo({
-      url: "/pages/editUser/editUser?id="+e.detail.item.id,
+      url: "/pages/editUser/editUser?id="+e.detail.item._id,
     })
 },
 
@@ -67,22 +67,20 @@ selectResult: function (e) {
       for (let i = 0; i < total; i += 20) {
         //promise每次获取完列表后
         new Promise((resolve, reject) => {
-          db.collection("user").orderBy("id", "asc").skip(i).limit(20).get().then(res=>resolve(res.data)).catch(e=>reject("查询列表失败"))
+          db.collection("user").orderBy("_id", "asc").skip(i).limit(20).get().then(res=>resolve(res.data)).catch(e=>reject("查询列表失败"))
         }).then(res=>{
           userList = userList.concat(res);
           if (userList.length == total){
-            console.log("获取数据成功")
-            // userList = userList.sort("id"); 
-            //对用户列表进行排序
-            for(let m = 0 ; m < userList.length-1 ; m++){
-              for (let n = m + 1; n < userList.length ; n++){
-                if (parseInt(userList[m].id) > parseInt(userList[n].id) ){
-                  let temp = userList[m];
-                  userList[m] = userList[n];
-                  userList[n] = temp;
-                }  
-              }
-            }
+            // console.log("获取数据成功")
+            // for(let m = 0 ; m < userList.length-1 ; m++){
+            //   for (let n = m + 1; n < userList.length ; n++){
+            //     if (parseInt(userList[m].id) > parseInt(userList[n].id) ){
+            //       let temp = userList[m];
+            //       userList[m] = userList[n];
+            //       userList[n] = temp;
+            //     }  
+            //   }
+            // }
             that.setData({
               userList: userList,
               totalUser : userList.length

@@ -17,8 +17,9 @@ exports.main = async (event, context) => {
   if (result.data.length == 1){
     if(result.data[0].userId){
       let userInfo = await db.collection('user').where({
-        id : result.data[0].userId
+        _id : result.data[0].userId
       }).get()
+      console.log(userInfo)
       return {
         code : "success",
         data : {

@@ -5,12 +5,10 @@ cloud.init()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  //获取上下文
-  const wxContext = cloud.getWXContext();
   //获取数据库对象
   const db = cloud.database();
   //获取公司信息的集合
-  const bigtable = db.collection('company');
+  const bigtable = db.collection('companys');
   //获取所有企业的cmpId和cmpName
   const result = await bigtable.where({
     all : null
@@ -20,7 +18,7 @@ exports.main = async (event, context) => {
     cmpName: true,
     _id : false
   })
-  .limit(2000)
+  .limit(5000)
   .get();
   console.log(result);
   return {

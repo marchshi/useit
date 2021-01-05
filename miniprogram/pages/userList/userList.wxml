@@ -8,8 +8,8 @@
     <button id="button-mini" type="primary" size="mini" bindtap="addUser">添加用户</button>
   </view>
   <view wx:for="{{userList}}" wx:key="unique">
-    <navigator class="item" url="/pages/editUser/editUser?id={{item.id}}" open-type="navigate">
-      {{item.id}}  {{item.name}}  {{item.dpmt}}
+    <navigator class="item" url="/pages/editUser/editUser?id={{item._id}}" open-type="navigate">
+      {{item.dpmt}}  {{item.name}}  {{item.idCode}}
     </navigator>
   </view>
 </view>

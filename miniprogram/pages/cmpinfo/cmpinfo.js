@@ -20,37 +20,20 @@ Page({
     this.cmpId = options.cmpId;
     //调用云函数获取页面需要展示的数据
     const _this = this;
-    wx.cloud.callFunction({
-      name: 'getcmpinfo',
-      data:{
-        cmpId : options.cmpId
-      },
-      success: function(res){
-        //1、初始化判断该企业是否收藏
-        let isCollect = false;
-        let collectList = getApp().data.collectList;
-        if (collectList.indexOf(res.result.data.stdCode) >= 0 ){
-          isCollect = true;
-        }
-        console.log(res);
-        //2、整理数据 先不判断该数据是否有效 先将里面的内容规整一下
-        // let cmpInfo = res.result.data;
-        // if(!cmpInfo.wanggeName || cmpInfo.wanggeName.length ==0 ){
-        //   cmpInfo.wanggeName = "无"
-        // }
-        // if(!cmpInfo.farenName || cmpInfo.farenName.length ==0 ){
-        //   cmpInfo.wanggeName = "无"
-        // }
-        // if(!cmpInfo.fuzeName || cmpInfo.fuzeName.length ==0 ){
-        //   cmpInfo.wanggeName = "无"
-        // }
-        _this.setData({
-          isCollect: isCollect,
-          cmpInfo : res.result.data
-        })
-        
-      },
-      fail:console.error
+    wx.cloud.database().collection("companys").where({
+      cmpId : options.cmpId
+    }).get().then(res=>{
+      console.log(res)
+      //1、初始化判断该企业是否收藏
+      let isCollect = false;
+      let collectList = getApp().data.collectList;
+      if (collectList.indexOf(res.data.stdCode) >= 0 ){
+        isCollect = true;
+      }
+      _this.setData({
+        isCollect: isCollect,
+        cmpInfo : res.data[0]
+      })
     })
   },
 
@@ -145,9 +128,6 @@ Page({
     })
   },
   onShareAppMessage: function () {
-
-
-
   }
 
 })
