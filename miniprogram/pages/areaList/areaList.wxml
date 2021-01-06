@@ -2,7 +2,7 @@
 <view class="container">
 <mp-cells title="片区列表">
   <view wx:for="{{areaList}}" wx:key="unique">
-    <mp-cell link hover url="/pages/editArea/editArea?id={{item.id}}" value="{{item.areaName}}"></mp-cell>
+    <mp-cell link hover url="/pages/editArea/editArea?id={{item.id}}" value="{{item.areaName + '  ' + (item.userName?item.userName:'未指定')}}"></mp-cell>
   </view>
 </mp-cells>
 </view>

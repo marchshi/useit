@@ -63,7 +63,7 @@ Page({
     console.log(blockList)
     let blockIndex = e.currentTarget.dataset.blockindex;
     let id = blockList[blockIndex].id;
-    blockList[blockIndex].userId = user.id;
+    blockList[blockIndex].userId = user._id;
     blockList[blockIndex].userName = user.name;
     let blockInfo = blockList[blockIndex];
     const db = wx.cloud.database();

@@ -33,7 +33,7 @@ Page({
    */
   onShow: function () {
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       blockId : this.data.blockId
     }).get().then(res=>{
       console.log(res)
@@ -54,7 +54,7 @@ Page({
     let blockId = this.data.blockId;
     let areaId = this.data.areaId;
     wx.navigateTo({
-      url: '/pages/addCompany/addCompany?type="add"&areaid=' + areaId +'&blockid=' + blockId,
+      url: '/pages/addCompany/addCompany?type=add&areaid=' + areaId +'&blockid=' + blockId,
     })
   }
 })

@@ -40,7 +40,7 @@ Page({
       })
     })
 
-    db.collection("department").where({all : null}).field({
+    db.collection("dpmt").where({all : null}).field({
       _id : false
     }).get().then(res=>{
       if(this.data.finishRequest + 1 == this.data.totalRequest){
@@ -54,9 +54,8 @@ Page({
     db.collection("user").where({
       auth :"6"
     }).orderBy("dpmtId","asc").field({
-      _id : false,
-      name : true,
-      id : true
+      _id : true,
+      name : true
     }).get().then(res=>{
       console.log(res)
       if(this.data.finishRequest + 1 == this.data.totalRequest){
@@ -128,7 +127,7 @@ Page({
   bindUserChange(e){
     this.setData({
       ["areainfo.userName"] : this.data.userList[parseInt(e.detail.value)].name,
-      ["areainfo.userId"] : this.data.userList[parseInt(e.detail.value)].id
+      ["areainfo.userId"] : this.data.userList[parseInt(e.detail.value)]._id
     })
   },
   formInputChange(e) {

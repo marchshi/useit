@@ -15,13 +15,6 @@
           <view class="picker">{{companyInfo.property?companyInfo.property:'请选择企业产权'}}</view>
         </picker>
       </mp-cell>
-      <view wx:if="{{companyInfo.property!=''}}">
-        <mp-cell title="企业类别" prop="className">
-          <picker bindchange="bindClassChange" range-key="className" range="{{classList}}">
-            <view class="picker">{{companyInfo.className?companyInfo.className:'请选择企业类别'}}</view>
-          </picker>
-        </mp-cell>
-      </view>
       <view wx:if="{{companyInfo.property=='租赁'}}">
         <mp-cell title="所在企业" ext-class="">
           <picker bindchange="bindOwnChange" range-key="name" range="{{ownCompanyList}}">

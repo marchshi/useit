@@ -17,8 +17,8 @@
     <mp-cell link hover url="/pages/areaList/areaList" value="(管理员)片区管理"></mp-cell>
     <mp-cell link hover url="/pages/setBlockUser/setBlockUser?areaid=1&dpmtid=1" value="(片区负责人)指定地块员"></mp-cell>
     <mp-cell link hover url="/pages/setCompanyUser/setCompanyUser?dpmtid=1&areaid=1" value="(片区负责人)指定企业网格员"></mp-cell>
-    <mp-cell link hover url="/pages/myBlockList/myBlockList?id=126" value="(地块员)我管理的地块"></mp-cell>
-    <mp-cell link hover url="/pages/myCompany/myCompany?id=126" value="(网格员)我挂钩的企业"></mp-cell>
+    <mp-cell link hover url="/pages/myBlockList/myBlockList?id=ba4347985ff2be7e006a16c7478cdb11" value="(地块员)我管理的地块"></mp-cell>
+    <mp-cell link hover url="/pages/myCompany/myCompany?id=ba4347985ff2be7e006a16c7478cdb11" value="(网格员)我挂钩的企业"></mp-cell>
   </mp-cells>
   
 </view>

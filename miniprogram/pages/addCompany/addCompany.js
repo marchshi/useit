@@ -9,33 +9,18 @@ Page({
       stdCode :"",
       property : ""
     },
-    ownClass:[
-      { class : "101",className : "工业企业"},
-      { class : "102",className : "其他"}
-    ],
-    leaseClass:[
-      { class : "201",className : "工业企业"},
-      { class : "202",className : "商贸办公"},
-      { class : "203",className : "个体户"},
-      { class : "204",className : "仓库物流"},
-      { class : "205",className : "服务业"},
-      { class : "206",className : "施工队"},
-      { class : "207",className : "未工商注册"},
-      { class : "208",className : "其他"},
-    ],
-    classList : [],
     property :["自有","租赁"],
     ownCompanyList:[],
     type : "add",
     rules: [{
         name: 'name',
         rules: {required: true, message: '请填写企业名称'},
-      }, {
+      },{
+        name: 'prop',
+        rules: {required: true, message: '请填写统一社会信用代码'},
+      },{
         name: 'property',
         rules: [{required: true, message: '请选择企业产权'}],
-      }, {
-        name: 'className',
-        rules: {required: true, message: '请选择企业类别'},
       }
     ],
     dialogShow : false,
@@ -47,34 +32,33 @@ Page({
    */
   onLoad: function (options) {
     const db = wx.cloud.database();
+    let that = this;
     console.log(options)
     let areaMap = {
       "1" : "一片区",
       "2" : "二片区",
-      "3" : "二片区",
-      "4" : "二片区",
-      "5" : "二片区",
-      "6" : "二片区",
+      "3" : "三片区",
+      "4" : "四片区",
+      "5" : "五片区",
+      "6" : "六片区",
     }
     if(options.type == "add"){
-      this.setData({
+      that.setData({
         type : "add",
         ['companyInfo.blockId'] : options.blockid+"",
         ['companyInfo.blockName'] : options.blockid+"地块",
         ['companyInfo.areaId'] : options.areaid+"",
-        ['companyInfo.areaName'] : areaMap[options.areaid+""],
+        ['companyInfo.areaName'] : areaMap[options.areaid+""]
       })
-    }else
-    if(options.type == "edit"){
+    }else if(options.type == "edit"){
       let id = options.id;
-      db.collection("company1").where({
+      db.collection("company").where({
         _id : id
       }).get().then(res=>{
         console.log(res)
-        let companyInfo = res.data[0];
-        this.setData({
+        that.setData({
           type : "edit",
-          companyInfo :companyInfo
+          companyInfo :res.data[0]
         })
       })
     }
@@ -93,29 +77,22 @@ Page({
    */
   onShow: function () {
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       blockId : this.data.companyInfo.blockId,
       property : "自有"
     }).get().then(res=>{
       console.log(res)
+      let ownCompanyList = res.data
+      for(let i = 0;i<ownCompanyList.length ; i++){
+        if(ownCompanyList[i]._id == this.data.companyInfo._id){
+          ownCompanyList.splice(i,1)
+          break
+        }
+      }
       this.setData({
-        ownCompanyList : res.data
+        ownCompanyList : ownCompanyList
       })
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**
@@ -147,22 +124,13 @@ Page({
     console.log(e)
     if(e.detail.value=="0"){
       this.setData({
-        ['companyInfo.property'] : "自有",
-        classList : this.data.ownClass
+        ['companyInfo.property'] : "自有"
       })
     }else if (e.detail.value=="1"){
       this.setData({
-        ['companyInfo.property'] : "租赁",
-        classList : this.data.leaseClass
+        ['companyInfo.property'] : "租赁"
       })
     }
-  },
-  bindClassChange(e){
-    console.log(e)
-    this.setData({
-      ["companyInfo.class"] : this.data.classList[parseInt(e.detail.value)].class,
-      ["companyInfo.className"] : this.data.classList[parseInt(e.detail.value)].className
-    })
   },
   bindOwnChange(e){
     console.log(e)
@@ -179,6 +147,8 @@ Page({
     })
   },
   onSubmit(){
+    
+    const db = wx.cloud.database();
     console.log(this.data.companyInfo)
     let companyInfo = this.data.companyInfo;
     companyInfo.time = new Date().getTime();
@@ -189,18 +159,18 @@ Page({
       2、企业名称和统一社会信用代码通过企查查进行验证（前提是需要统一社会信用代码）102 207 208不需要
       3、如果是租赁企业，验证是否填写所在企业
     */
-    const db = wx.cloud.database();
-    db.collection("company1").where({
-      name : companyInfo.name
-    }).get().then(res=>{
-      console.log(res)
-      if(res.data.length == 1){
-        this.setData({
-          dialogShow : true,
-          dialogText : "该企业已在"+res.data[0].areaName+res.data[0].blockName +"登记，请进一步确认。如存在一厂多址的情况请与管理员联系。"
-        })
-      }else{
-        if(companyInfo.class!='102' && companyInfo.class!='207' && companyInfo.class!='208'){
+    if(this.data.type == "add"){
+      db.collection("company").where({
+        name : companyInfo.name
+      }).get().then(res=>{
+        console.log(res)
+        if(res.data.length == 1){
+          this.setData({
+            dialogShow : true,
+            dialogText : "该企业已在"+res.data[0].areaName+res.data[0].blockName +"登记，请进一步确认。如存在一厂多址的情况请与管理员联系。"
+          })
+          return
+        }else{
           //对其信用代码的长度进行校验
           if(companyInfo.stdCode.length != 15 && companyInfo.stdCode.length != 18){
             this.setData({
@@ -208,20 +178,87 @@ Page({
             })
             return;
           }
-          
           //调用接口查看企业名称和统一社会信用代码是否对应
         }
-      }
-    })
-    
-    db.collection("company1").add({
-      data: this.data.companyInfo
-    }).then(res=>{
-      console.log(res)
-      wx.showToast({
-        title: '添加成功',
-        duration: 1000
+        if(!companyInfo.property){
+          this.setData({
+            dialogShow : true,
+            dialogText : "请选择企业产权！"
+          })
+          return
+        }
+        if(companyInfo.property == "租赁" && !(companyInfo.ownCompanyId && companyInfo.ownCompanyName)){
+          this.setData({
+            dialogShow : true,
+            dialogText : "请明确所在企业！"
+          })
+          return
+        }
+        db.collection("company").add({
+          data: this.data.companyInfo
+        }).then(res=>{
+          console.log(res)
+          wx.showToast({
+            title: '添加成功',
+            duration: 1000
+          })
+        })
       })
-    })
+    }else if (this.data.type == "edit"){
+      if(companyInfo.property == "租赁"){
+        db.collection("company").where({
+          ownCompanyId : companyInfo._id
+        }).count().then(total=>{
+          if(total > 0){
+            this.setData({
+              dialogShow : true,
+              dialogText : "该企业内存在"+ total +"家租赁企业，请先取消租赁关系再更改产权！"
+            })
+            return
+          }else{
+            if(companyInfo.ownCompanyId && companyInfo.ownCompanyName){
+              db.collection("company").where({
+                _id : companyInfo._id
+              }).update({
+                data :{
+                  property : companyInfo.property,
+                  ownCompanyId : companyInfo.ownCompanyId,
+                  ownCompanyName : companyInfo.ownCompanyName
+                }
+              }).then(res=>{
+                console.log(res)
+                wx.showToast({
+                  title: '保存成功',
+                  duration: 1000
+                })
+              })
+            }else{
+              this.setData({
+                dialogShow : true,
+                dialogText : "请明确所在企业！"
+              })
+              return
+            }
+          }
+        })
+      }else if(companyInfo.property == "自有"){
+        db.collection("company").where({
+          _id : companyInfo._id
+        }).update({
+          data :{
+            property : companyInfo.property,
+            ownCompanyId : null,
+            ownCompanyName : null
+          }
+        }).then(res=>{
+          console.log(res)
+          wx.showToast({
+            title: '保存成功',
+            duration: 1000
+          })
+        })
+      }
+    }
+    
   }
 })

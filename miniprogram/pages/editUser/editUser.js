@@ -1,3 +1,4 @@
+
 // miniprogram/pages/editUser/editUser.js
 Page({
 
@@ -17,7 +18,7 @@ Page({
       rules: {required: true, message: '请填写姓名'},
     }, {
       name: 'tel',
-      rules: [{required: true, message: '请填写微信绑定的手机号'},{mobile: true, message: '手机号格式不对'}],
+      rules: [{required: true, message: '请填写联系电话'},{mobile: true, message: '手机号格式不对'}],
     }, {
       name: 'dpmt',
       rules: {required: true, message: '请填写部门'},
@@ -46,35 +47,27 @@ Page({
       title: '正在加载中',
     })
     const db = wx.cloud.database();
-    if(this.data.pageType=="add"){
-      db.collection("user").orderBy("id","desc").limit(1).get().then(res1=>{
-        db.collection("dpmt").where({all : null}).field({
-          _id : false
-        }).get().then(res2=>{
-          this.setData({
-            ["userinfo.id"] : (parseInt(res1.data[0].id)+1)+"",
-            dpmtList : res2.data
-          })
-          wx.hideLoading()
-        })
+    db.collection("dpmt").where({all : null}).field({
+      _id : false
+    }).get().then(res1=>{
+      this.setData({
+        dpmtList : res1.data
       })
-    }else{
+      wx.hideLoading()
+    })
+    if(this.data.pageType=="edit"){
       db.collection('user').where({
         _id : this.data.id
-      }).get().then(res1=>{
-        db.collection("dpmt").where({all : null}).field({
-          _id : false
-        }).get().then(res2=>{
-          this.setData({
-            userinfo: res1.data[0],
-            dpmtList : res2.data,
-            authIndex : this.data.authList.indexOf(res1.data[0].auth)
-          })
-          wx.hideLoading()
+      }).field({
+        _openid : false
+      }).get().then(res=>{
+        this.setData({
+          userinfo: res.data[0],
+          authIndex : this.data.authList.indexOf(res.data[0].auth)
         })
+        wx.hideLoading()
       });
     }
-      
   },
 
   /**
@@ -88,7 +81,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const db = wx.cloud.database();
     
   },
 
@@ -101,6 +93,7 @@ Page({
 
   onSubmit(){
     let userinfo = this.data.userinfo;
+    delete userinfo._id;
     const db = wx.cloud.database();
     this.selectComponent('#form').validate((valid, errors) => {
       console.log('valid', valid, errors)
@@ -114,7 +107,7 @@ Page({
       } else {
         if(this.data.pageType == "edit"){
           db.collection("user").where({
-            id : userinfo.id
+            _id : this.data.id
           }).update({
             data :userinfo
           }).then(res=>{
@@ -127,6 +120,7 @@ Page({
             }
           })
         }else{
+          userinfo.idCode = userinfo.tel.substring(userinfo.tel.length - 6 ,userinfo.tel.length)
           db.collection("user").add({
             data :userinfo
           }).then(res=>{
@@ -137,7 +131,8 @@ Page({
                 duration:1000
               })
               this.setData({
-                pageType :"edit"
+                pageType :"edit",
+                id : res._id
               })
             }
           })
@@ -155,12 +150,21 @@ Page({
     if(e.detail.index == 1){
       const db = wx.cloud.database();
       db.collection("user").where({
-        id : this.data.userinfo.id
+        _id : this.data.id
       }).remove().then(res=>{
+        this.setData({
+          dialogShow:false
+        })
         wx.showToast({
           title: '删除成功',
           duration: 1000
         })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1000);
+        
       })
     }else if(e.detail.index == 0){
       this.setData({

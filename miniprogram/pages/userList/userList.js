@@ -6,7 +6,7 @@ Page({
    */
   data: {
     userList :{},
-    totalUser : 0,
+    totalUser : 0
   },
 
   /**
@@ -33,8 +33,8 @@ search: function (value) {
         }
       }
       console.log(searchList)
-      resolve(searchList)
     }
+    resolve(searchList)
   })
 },
 selectResult: function (e) {
@@ -58,6 +58,9 @@ selectResult: function (e) {
     //1、获取数据库引用
     const db = wx.cloud.database();
     const that = this;
+    this.setData({
+      searchValue : ""
+    })
     //promise获取到总数后根据总数进行查询
     new Promise((resolve, reject) => {
       db.collection("user").count().then(res => resolve(res.total)).catch(e => reject("获取总数失败"));
@@ -71,21 +74,22 @@ selectResult: function (e) {
         }).then(res=>{
           userList = userList.concat(res);
           if (userList.length == total){
-            // console.log("获取数据成功")
-            // for(let m = 0 ; m < userList.length-1 ; m++){
-            //   for (let n = m + 1; n < userList.length ; n++){
-            //     if (parseInt(userList[m].id) > parseInt(userList[n].id) ){
-            //       let temp = userList[m];
-            //       userList[m] = userList[n];
-            //       userList[n] = temp;
-            //     }  
-            //   }
-            // }
+            console.log("获取数据成功")
+            for(let m = 0 ; m < userList.length-1 ; m++){
+              for (let n = m + 1; n < userList.length ; n++){
+                if (userList[m]._id > userList[n]._id ){
+                  let temp = userList[m];
+                  userList[m] = userList[n];
+                  userList[n] = temp;
+                }  
+              }
+            }
             that.setData({
               userList: userList,
               totalUser : userList.length
             })
             wx.hideLoading();
+            that.search("")
           }
         })
       }
