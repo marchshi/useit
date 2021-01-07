@@ -28,7 +28,7 @@
   </view>
   
   <view class="button-line">
-    <view class="button-item" style="background:#1a9f5f" bindtap="toChooseArea">
+    <view class="button-item" style="background:#1a9f5f" >
       <view class="button-text">按企业类别查找</view>
     </view>
     <view class="button-item" style="background:#4a8af3" bindtap="onOldSearchTap">

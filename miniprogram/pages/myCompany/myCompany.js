@@ -15,12 +15,13 @@ Page({
   onLoad: function (options) {
     console.log(options)
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       userId : options.id
     }).get().then(res=>{
       console.log(res)
       this.setData({
-        companyList : res.data
+        companyList : res.data,
+        userId : options.id
       })
     })
   },

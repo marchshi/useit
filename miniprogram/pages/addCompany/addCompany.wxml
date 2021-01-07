@@ -25,9 +25,9 @@
       
     </mp-cells>
     <button type="primary" bindtap="onSubmit">保存</button>
-    <button wx:if="{{type=='edit'}}" type="warn" bindtap="onSubmit">删除</button>
+    <button wx:if="{{type=='edit'}}" type="warn" bindtap="onDelete">删除</button>
   </mp-form>
-  <mp-dialog title="添加失败" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="[{text: '确定'}]">
-    <view>{{dialogText}}</view>
+  <mp-dialog title="注意" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view>你确定要删除此用户吗？</view>
   </mp-dialog>
 </view>

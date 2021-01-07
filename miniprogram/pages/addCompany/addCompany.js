@@ -24,6 +24,7 @@ Page({
       }
     ],
     dialogShow : false,
+    buttons: [{text: '取消'}, {text: '确定'}],
     dialogText : "该企业已存在"
   },
   
@@ -260,5 +261,54 @@ Page({
       }
     }
     
+  },
+  onDelete(){
+    
+    this.setData({
+      dialogShow:true
+    })
+  },
+  tapDialogButton(e){
+    console.log(e)
+    if(e.detail.index == 1){
+      const db = wx.cloud.database();
+      let companyInfo = this.data.companyInfo;
+      db.collection("company").where({
+        ownCompanyId : companyInfo._id
+      }).count().then(res=>{
+        console.log(res)
+        if(res.total == 0 ){
+          db.collection("company").where({
+            _id : companyInfo._id
+          }).remove().then((res)=>{
+            console.log(res)
+            wx.showToast({
+              title: '删除成功',
+              duration: 1000
+            })
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta: 1,
+              })
+            },1000)
+          })
+        }else{
+          this.setData({
+            dialogShow : false,
+          })
+          wx.showToast({
+            title: "该企业内存在"+ res.total +"家租赁企业，请先取消租赁关系再删除企业！",
+            duration: 2000,
+            icon:"none"
+          })
+        }
+      })
+    }else{
+      if(e.detail.index == 0){
+        this.setData({
+          dialogShow:false
+        })
+      }
+    }
   }
 })

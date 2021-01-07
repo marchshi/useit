@@ -35,7 +35,7 @@ Page({
    */
   onLoad: function (options) {
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       _id : options.id
     }).get().then(res=>{
       console.log(res)
@@ -45,7 +45,7 @@ Page({
       })
       //获取网格员的相关信息
       db.collection("user").where({
-        id : companyInfo.userId
+        _id : companyInfo.userId
       }).get().then(res1=>{
         console.log(res1)
         let tel = res1.data[0].tel;
@@ -55,7 +55,7 @@ Page({
         })
       })
       //获取内部租赁企业的相关信息
-      db.collection("company1").where({
+      db.collection("company").where({
         ownCompanyId : companyInfo._id
       }).get().then(res2=>{
         console.log(res2)

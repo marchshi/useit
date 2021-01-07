@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       areaId : options.areaid +"",
       property : "自有"
     }).get().then(res=>{
@@ -64,11 +64,11 @@ Page({
     console.log(companyList)
     let companyindex = e.currentTarget.dataset.companyindex;
     let id = companyList[companyindex]._id;
-    companyList[companyindex].userId = user.id;
+    companyList[companyindex].userId = user._id;
     companyList[companyindex].userName = user.name;
     let companyInfo = companyList[companyindex];
     const db = wx.cloud.database();
-    db.collection("company1").where({
+    db.collection("company").where({
       _id : id
     }).update({
       data: {

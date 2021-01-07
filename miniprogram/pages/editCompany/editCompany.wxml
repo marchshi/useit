@@ -15,7 +15,7 @@
       <mp-cell wx:if="{{companyInfo.property=='租赁'}}"  prop="ownCompany" title="所在企业" ext-class="">
         <view >{{companyInfo.ownCompanyName}}</view>
       </mp-cell>
-      <mp-cell wx:if="{{companyInfo.property=='自有'&&companyInfo.leaseCompanyList!=[]}}"  prop="ownCompany" title="内部企业" ext-class="">
+      <mp-cell wx:if="{{companyInfo.property=='自有' && companyInfo.leaseCompanyList.length != 0}}"  prop="ownCompany" title="内部企业" ext-class="">
         <view wx:for="{{companyInfo.leaseCompanyList}}" wx:key="unique">{{item.name}}</view>
       </mp-cell>
       <mp-cell  prop="class" title="企业类别" ext-class="">
